@@ -56,7 +56,6 @@ ehthumbs.db
 # ==================================================
 #  Monorepo / package manager
 # ==================================================
-pnpm-lock.yaml
 yarn.lock
 package-lock.json
 

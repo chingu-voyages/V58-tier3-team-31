@@ -1,0 +1,70 @@
+name: Code Quality Checks
+
+# Triggers the workflow on push and pull request events
+on:
+  push:
+    branches: 
+      # Run on pushes to the main branch
+      - main
+      # Run on pushes to any branch that follows a pattern like 'feature/name' or 'fix/name'
+      - '*/*'
+  pull_request:
+    # Runs the checks when a PR is opened, synchronized (new push), or reopened
+    branches: [ "main" ]
+
+# Define the set of jobs to run
+jobs:
+  # ------------------------------------------------------------------
+  # 1. Biome Check (Linter/Formatter)
+  # ------------------------------------------------------------------
+  biome-check:
+    name: Biome Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        # Action to clone the repository's code
+        uses: actions/checkout@v4
+        with:
+          # Required to fetch all history/commits for proper checks
+          fetch-depth: 0 
+      
+      - name: Setup Node.js
+        # Action to download and set up Node.js runtime environment
+        uses: actions/setup-node@v4
+        with:
+          # Using Node.js version 24 (based on common compatibility)
+          node-version: 24 
+          # Cache pnpm dependencies to speed up subsequent runs
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        # Use pnpm to install project dependencies defined in package.json
+        run: pnpm install --frozen-lockfile
+      
+      - name: Setup Biome
+        # Sets up the Biome binary
+        uses: biomejs/setup-biome@v2
+      
+      - name: Run Biome CI Checks
+        # The 'ci' command runs linting and formatting checks without applying fixes
+        run: pnpm biome ci
+
+  # ------------------------------------------------------------------
+  # 2. Commit Linter Check
+  # ------------------------------------------------------------------
+  commit-lint:
+    name: Commit Message Check
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch all commits for PR linting
+          fetch-depth: 0 
+      
+      - name: Lint Commit Messages
+        # Uses a dedicated action to simplify running commitlint
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          # Points the linter to the config file you created
+          configFile: .commitlintrc.js

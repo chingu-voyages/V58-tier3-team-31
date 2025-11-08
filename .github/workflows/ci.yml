@@ -1,6 +1,18 @@
-# ------------------------------------------------------------------
-  # 1. Biome Check (Linter/Formatter)
-  # ------------------------------------------------------------------
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
   biome-check:
     name: Biome Code Quality
     runs-on: ubuntu-latest
@@ -10,19 +22,16 @@
         with:
           fetch-depth: 0 
 
-      # FIX 1: Use dedicated action to reliably install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8.x # Use a stable version, or leave empty for latest, or specify exactly
+          version: 8.x
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24 
-          cache: 'pnpm' # Use pnpm cache now that it's installed
-
-      # DELETED: - name: Install pnpm globally (npm install -g pnpm)
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -33,9 +42,6 @@
       - name: Run Biome CI Checks
         run: pnpm biome ci
 
-  # ------------------------------------------------------------------
-  # 2. Commit Linter Check
-  # ------------------------------------------------------------------
   commit-lint:
     name: Commit Message Check
     runs-on: ubuntu-latest 
@@ -45,19 +51,16 @@
         with:
           fetch-depth: 0
 
-      # FIX 2: Use dedicated action to reliably install pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8.x # Use a stable version, or leave empty for latest, or specify exactly
+          version: 8.x
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24 
           cache: 'pnpm'
-      
-      # DELETED: - name: Install pnpm globally (npm install -g pnpm)
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile

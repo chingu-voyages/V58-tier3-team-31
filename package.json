@@ -1,11 +1,12 @@
 {
-	"name": "v58-mono-repo",
-	"version": "1.0.0",
+	"name": "safestep",
+	"version": "0.0.1",
 	"type": "module",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "lefthook install"
 	},
 	"keywords": [],
 	"author": "",

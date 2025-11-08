@@ -36,9 +36,8 @@ jobs:
           node-version: 24 
           # Cache pnpm dependencies to speed up subsequent runs
           cache: 'pnpm'
+          cache-dependency-path: 'package.json'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
 
       - name: Install Dependencies
         # Use pnpm to install project dependencies defined in package.json
@@ -63,11 +62,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           # Fetch all commits for PR linting
-          fetch-depth: 0 
+          fetch-depth: 0
+
+      # *** ADDED: Node.js setup and pnpm installation ***
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24 
+          cache: 'pnpm'
+          cache-dependency-path: 'package.json' 
+
+      - name: Install Dependencies
+        # Required for the commitlint action to find the .cjs config and dependencies
+        run: pnpm install --frozen-lockfile
+      # ************************************************* 
       
       - name: Lint Commit Messages
         # Uses a dedicated action to simplify running commitlint
         uses: wagoid/commitlint-github-action@v6
         with:
           # Points the linter to the config file you created
-          configFile: .commitlintrc.js
+          configFile: commitlint.config.cjs

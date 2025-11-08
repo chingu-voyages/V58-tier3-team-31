@@ -37,6 +37,9 @@ jobs:
           # Cache pnpm dependencies to speed up subsequent runs
           cache: 'pnpm'
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Install Dependencies
         # Use pnpm to install project dependencies defined in package.json
         run: pnpm install --frozen-lockfile

@@ -36,7 +36,7 @@ coding!
 
 - Teammate name #1: [GitHub](https://github.com/dk-afriyie) / [LinkedIn](https://linkedin.com/in/danielkafriyie)
 - Teammate name #2: [GitHub](https://github.com/frugalcodes) / [LinkedIn](https://uk.linkedin.com/in/samuel-igwe-031152226))
-- Teammate name #3: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Teammate name #3: [GitHub](https://github.com/TEMESGEN-G25) / [LinkedIn](https://linkedin.com/in/natigebregorgis)
 - Teammate name #4: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Teammate name #5: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Teammate name #6: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)

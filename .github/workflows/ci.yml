@@ -36,7 +36,9 @@ jobs:
           node-version: 24 
           # Cache pnpm dependencies to speed up subsequent runs
           cache: 'pnpm'
-          cache-dependency-path: 'package.json'
+
+      - name: Install pnpm globally
+        run: npm install -g pnpm 
 
 
       - name: Install Dependencies
@@ -70,7 +72,9 @@ jobs:
         with:
           node-version: 24 
           cache: 'pnpm'
-          cache-dependency-path: 'package.json' 
+      
+      - name: Install pnpm globally
+        run: npm install -g pnpm 
 
       - name: Install Dependencies
         # Required for the commitlint action to find the .cjs config and dependencies

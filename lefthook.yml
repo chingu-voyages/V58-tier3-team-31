@@ -1,0 +1,20 @@
+
+pre-commit:
+  commands:
+    biome:
+      run: pnpm biome format --write
+      stage_fixed: true
+
+prepare-commit-msg:
+  commands:
+    commitizen:
+      interactive: true
+      run: |
+        if [ -n "$(git diff --cached --name-only)" ]; then
+          pnpm exec cz --hook
+        fi
+
+commit-msg:
+  commands:
+    "lint commit message":
+      run: pnpm exec commitlint --edit {1}

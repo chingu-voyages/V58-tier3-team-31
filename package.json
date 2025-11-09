@@ -6,7 +6,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"prepare": "lefthook install"
+		"prepare": "lefthook install",
+		"lint-format": "biome check --write"
 	},
 	"keywords": [],
 	"author": "",

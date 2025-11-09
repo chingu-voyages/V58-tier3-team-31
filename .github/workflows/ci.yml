@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  biome-check:
+    name: Biome Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: Install pnpm and Cache
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24 
+
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+      
+      - name: Run Biome CI Checks
+        run: pnpm biome ci
+

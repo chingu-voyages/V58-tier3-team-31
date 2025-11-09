@@ -36,11 +36,11 @@ coding!
 
 - Teammate name #1: [GitHub](https://github.com/dk-afriyie) / [LinkedIn](https://linkedin.com/in/danielkafriyie)
 - Teammate name #2: [GitHub](https://github.com/frugalcodes) / [LinkedIn](https://uk.linkedin.com/in/samuel-igwe-031152226)
-- Teammate name #3: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #4: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #5: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #6: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #7: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Teammate name #3: [GitHub](https://github.com/TEMESGEN-G25)/ [LinkedIn](https://linkedin.com/in/natigebregorgis)
+- Teammate name #4: [GitHub](https://github.com/fmtabbara) / [LinkedIn](https://linkedin.com/in/fouad-tabbara-1b754461)
+- Teammate name #5: [GitHub](https://github.com/tascapeter514) / [LinkedIn](https://linkedin.com/in/peter-tasca)
+- Teammate name #6: [GitHub](https://github.com/Xondacc) / [LinkedIn](https://linkedin.com/in/ruthigwe-oruta)
+- Teammate name #7: [GitHub](https://github.com/a10823888w) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
 
 

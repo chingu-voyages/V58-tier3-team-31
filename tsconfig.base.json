@@ -10,6 +10,12 @@
 		"module": "nodenext",
 		"target": "esnext",
 		"types": [],
+		"baseUrl": ".",
+		"paths": {
+			"@shared/*": ["packages/shared/*"]
+		},
+		"lib": ["ESNext", "DOM"],
+
 		// For nodejs:
 		// "lib": ["esnext"],
 		// "types": ["node"],
@@ -34,7 +40,7 @@
 
 		// Recommended Options
 		"strict": true,
-		"verbatimModuleSyntax": true,
+		// "verbatimModuleSyntax": true,
 		"isolatedModules": true,
 		"noUncheckedSideEffectImports": true,
 		"moduleDetection": "force",

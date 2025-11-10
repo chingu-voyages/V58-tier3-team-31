@@ -87,13 +87,13 @@ Everyone on your team should add their name along with a link to their GitHub
 your repo access and to practice PR'ing with your team *before* you start
 coding!
 
-- Teammate name #1: [GitHub](https://github.com/dk-afriyie) / [LinkedIn](https://linkedin.com/in/danielkafriyie)
-- Teammate name #2: [GitHub](https://github.com/frugalcodes) / [LinkedIn](https://uk.linkedin.com/in/samuel-igwe-031152226))
-- Teammate name #3: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #4: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #5: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #6: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #7: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Daniel Afriyie: [GitHub](https://github.com/dk-afriyie) / [LinkedIn](https://linkedin.com/in/danielkafriyie)
+- Samuel Igwe: [GitHub](https://github.com/frugalcodes) / [LinkedIn](https://uk.linkedin.com/in/samuel-igwe-031152226)
+- Nati Gebregorgis: [GitHub](https://github.com/TEMESGEN-G25)/ [LinkedIn](https://linkedin.com/in/natigebregorgis)
+- Fouad Tabbara: [GitHub](https://github.com/fmtabbara) / [LinkedIn](https://linkedin.com/in/fouad-tabbara-1b754461)
+- Peter Tasca: [GitHub](https://github.com/tascapeter514) / [LinkedIn](https://linkedin.com/in/peter-tasca)
+- Ruth Igwe-Oruta: [GitHub](https://github.com/Xondacc) / [LinkedIn](https://linkedin.com/in/ruthigwe-oruta)
+- Avy: [GitHub](https://github.com/a10823888w) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
 
 

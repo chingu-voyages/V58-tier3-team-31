@@ -1,0 +1,19 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.20.0",
+	"devDependencies": {
+		"supabase": "^2.54.11"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.81.0"
+	}
+}

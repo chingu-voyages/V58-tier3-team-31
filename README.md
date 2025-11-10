@@ -13,6 +13,59 @@ in your `readme` feel free to replace the text we've provided here.
 
 > Own it & Make it your Own!
 
+---
+
+## 🚀 Local Environment Setup (Supabase & React Native)
+
+To run the application against a local, isolated instance of the **Supabase backend**, follow these steps.
+
+### Prerequisites
+
+You need the following tools installed and running **globally** on your system:
+
+- **Supabase CLI:** Required for managing the local backend services.
+    ```bash
+    npm install -g supabase-cli
+    ```
+- **Docker:** Required to run the local Supabase services.
+    - **Installation:** Download and install **Docker Desktop** for your operating system (Mac, Windows, Linux) from the official Docker website. Ensure the Docker service is running before proceeding.
+
+### Step 1: Start the Local Supabase Instance
+
+1.  Navigate to the root directory of the project.
+2.  Start the local Supabase services. This may take a minute and requires Docker to be running.
+    ```bash
+    supabase start
+    ```
+    ⚠️ **IMPORTANT:** Note the **`anon key`** and **`API URL`** that are outputted by this command. Keep these handy for the next step.
+
+### Step 2: Configure Local Environment Variables
+
+The application needs environment variables to connect to the local Supabase instance. **Do not track the actual values in Git.**
+
+1.  **Copy the Example File:** Create your local environment file by copying the example provided in this repository:
+    ```bash
+    cp .env.example .env.local .env.production
+    ```
+2.  **Populate Secrets:** Open the newly created **`.env.local`** file and replace the placeholder values with the output from `supabase start`:
+
+    ```
+    # .env.local
+    # --- LOCAL SUPABASE INSTANCE KEYS ---
+    SUPABASE_URL="[http://127.0.0.1:54321](http://127.0.0.1:54321)" # The API URL from supabase start
+    SUPABASE_ANON_KEY="<paste_the_anon_key_from_supabase_start>"
+    ```
+
+and **`.env.production`**
+
+### Step 3: Run Migrations
+
+If your project includes database changes (migrations), sync them to your local database to ensure your schema is up to date:
+
+```bash
+supabase db reset
+```
+
 ## Team Documents
 
 You may find these helpful as you work together to organize your project.

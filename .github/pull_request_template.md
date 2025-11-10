@@ -4,7 +4,6 @@
 <!-- Add relevant motivation and context -->
 <!-- List any dependencies required for this change -->
 
-Addresses: [ECG-#](https://dsd-east-coast-goats.atlassian.net/browse/ECG-#)
 
 ## Type of change
 

@@ -8,7 +8,9 @@
 		"android": "expo start --android",
 		"ios": "expo start --ios",
 		"web": "expo start --web",
-		"lint": "expo lint"
+		"lint:fix": "pnpm exec biome format .",
+  		"lint": "pnpm exec biome check .",
+		"lint: expo": "expo lint"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^15.0.3",

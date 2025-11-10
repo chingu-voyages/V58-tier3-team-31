@@ -6,7 +6,15 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": [
+			"mobile/**/*.ts",
+			"mobile/**/*.tsx",
+			"api/**/*.ts",
+			"api/**/*.tsx",
+			"packages/**/*.ts",
+			"packages/**/*.tsx"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -27,7 +35,7 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": "off"
 			}
 		}
 	}

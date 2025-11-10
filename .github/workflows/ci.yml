@@ -67,15 +67,11 @@ jobs:
 
       - name: Setup Supabase CLI
         if: steps.filter.outputs.migrations == 'true'
-        uses: supabase/cli@v1.44.2
-
-      - name: Deploy Migrations to Production
-        if: steps.filter.outputs.migrations == 'true'
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
-          echo "Linking project ref: $SUPABASE_PROJECT_REF"
-          # Call the binary installed by the 'Setup Supabase CLI' step
-          supabase link --project-ref $SUPABASE_PROJECT_REF
-          supabase db push
+            cd api
+            echo "Linking project ref: $SUPABASE_PROJECT_REF"
+            npx supabase link --project-ref $SUPABASE_PROJECT_REF
+            npx supabase db push

@@ -65,7 +65,7 @@ jobs:
               - 'supabase/migrations/**'
 
 
-      - name: Setup Supabase CLI
+      - name: Deploy Migrations to Production
         if: steps.filter.outputs.migrations == 'true'
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

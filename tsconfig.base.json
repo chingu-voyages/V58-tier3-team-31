@@ -10,6 +10,12 @@
 		"module": "nodenext",
 		"target": "esnext",
 		"types": [],
+		"baseUrl": ".",
+		"paths": {
+			"@shared/*": ["packages/shared/*"]
+		},
+		"lib": ["ESNext", "DOM"],
+
 		// For nodejs:
 		// "lib": ["esnext"],
 		// "types": ["node"],

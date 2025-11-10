@@ -1,10 +1,13 @@
 packages:
-  - "packages/*"
-  - "api"
+  - packages/*
+  - api
+  - mobile
 
 catalog:
-  "@biomejs/biome": "^2.3.4"
-  "typescript": "^5.9.3"
+  '@biomejs/biome': ^2.3.4
+  typescript: ^5.9.3
+
+nodeLinker: hoisted
 
 onlyBuiltDependencies:
   - supabase

@@ -2,7 +2,9 @@
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
 		"strict": true,
+		"module": "nodenext",
 		"baseUrl": ".",
+		"jsx": "react-jsx",
 		"paths": {
 			"@/*": ["./*"]
 		}

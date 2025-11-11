@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
-import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import React from "react";
+
 import { HapticTab } from "@/components/haptic-tab";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Colors } from "@/constants/theme";
@@ -20,7 +21,7 @@ export default function TabLayout() {
 				name="index"
 				options={{
 					title: "Home",
-					tabBarIcon: ({ color }: BottomTabBarProps) => (
+					tabBarIcon: ({ color }) => (
 						<IconSymbol size={28} name="house.fill" color={color} />
 					),
 				}}
@@ -29,7 +30,7 @@ export default function TabLayout() {
 				name="explore"
 				options={{
 					title: "Explore",
-					tabBarIcon: ({ color }: BottomTabBarProps) => (
+					tabBarIcon: ({ color }) => (
 						<IconSymbol size={28} name="paperplane.fill" color={color} />
 					),
 				}}

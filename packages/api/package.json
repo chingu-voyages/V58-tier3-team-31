@@ -1,5 +1,5 @@
 {
-	"name": "@safe-step/api",
+	"name": "@safe-steps/api",
 	"version": "0.0.1",
 	"description": "",
 	"main": "index.js",
@@ -8,5 +8,9 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"packageManager": "pnpm@10.20.0",
+	"dependencies": {
+		"@supabase/supabase-js": "^2.81.0"
+	}
 }

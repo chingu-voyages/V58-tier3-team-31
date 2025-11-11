@@ -2,12 +2,16 @@ import { AppState, Platform } from "react-native";
 import "react-native-url-polyfill/auto";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient, processLock } from "@supabase/supabase-js";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@env";
 
-// const supabaseUrl = YOUR_REACT_NATIVE_SUPABASE_URL
-// const supabaseAnonKey = YOUR_REACT_NATIVE_SUPABASE_PUBLISHABLE_KEY
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+if (!supabaseUrl || !supabaseAnonKey) {
+	console.log("supabase url:", supabaseUrl);
+	throw new Error("Missing Supabase environment variables");
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 	auth: {
 		...(Platform.OS !== "web" ? { storage: AsyncStorage } : {}),
 		autoRefreshToken: true,

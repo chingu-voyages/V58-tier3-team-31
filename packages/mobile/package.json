@@ -8,7 +8,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "pnpm exec biome check .",
+		"lint:fix": "pnpm exec biome format --write ."
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -43,9 +44,8 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
-    "eslint": "^9.25.0",
-    "eslint-config-expo": "~10.0.0",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "@biomejs/biome": "^2.3.4"
   },
   "private": true
 }

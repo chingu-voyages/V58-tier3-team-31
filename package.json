@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"prepare": "lefthook install",
 		"lint": "pnpm exec biome check .",
-		"lint:fix": "pnpm exec biome format ."
+		"lint:fix": "pnpm exec biome format --write ."
 	},
 	"keywords": [],
 	"author": "",

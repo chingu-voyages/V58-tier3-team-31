@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    // "useUnknownInCatchVariables": false,
     "isolatedModules": true, // Good to enforce monorepo safety
     "noUncheckedIndexedAccess": true, // Stricter array access
     "paths": {

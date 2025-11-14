@@ -2,10 +2,13 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "isolatedModules": true, // Good to enforce monorepo safety
+    "noUncheckedIndexedAccess": true, // Stricter array access
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@shared/*": ["../../packages/shared/*"]
     }
   },
   "include": [

@@ -53,6 +53,8 @@ const useLocationTracker = () => {
 				},
 			);
 
+			console.log("subscription:", subscription);
+
 			subscriptionRef.current = subscription;
 			setIsTracking(true);
 			Alert.alert("Tracking started", "Location is now being monitored");
@@ -73,6 +75,7 @@ const useLocationTracker = () => {
 
 	const stopTracking = () => {
 		if (subscriptionRef.current) {
+			console.log("subscription ref:", subscriptionRef.current);
 			subscriptionRef.current.remove();
 			subscriptionRef.current = null;
 			setIsTracking(false);

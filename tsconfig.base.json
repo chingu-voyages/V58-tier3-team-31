@@ -9,6 +9,7 @@
 		// See also https://aka.ms/tsconfig/module
 		"module": "nodenext",
 		"target": "esnext",
+		"jsx": "react-native",
 		"types": [],
 		"baseUrl": ".",
 		"paths": {
@@ -29,6 +30,7 @@
 		// Stricter Typechecking Options
 		"noUncheckedIndexedAccess": true,
 		"exactOptionalPropertyTypes": true,
+		"useUnknownInCatchVariables": false,
 
 		// Style Options
 		// "noImplicitReturns": true,

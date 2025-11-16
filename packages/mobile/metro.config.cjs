@@ -3,7 +3,6 @@ const { withNativeWind } = require("nativewind/metro");
 const path = require('path');
 
 const projectRoot = __dirname;
-console.log('metro project root:', projectRoot)
 const workspaceRoot = path.resolve(projectRoot, '../../');
 
 // require('@expo/env').load(workspaceRoot, { force: true });

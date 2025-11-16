@@ -7,7 +7,6 @@ module.exports = {
     extend: {
         colors: {
             "pine-green": "#01796F"
-
         }
     },
   },

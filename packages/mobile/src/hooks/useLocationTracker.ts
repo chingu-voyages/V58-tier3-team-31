@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 import type {
 	LocationCoords,
 	LocationSubscription,
-} from "../types/geolocation";
+} from "@/lib/types/geolocation";
 
 const useLocationTracker = () => {
 	const [isLoading, setIsLoading] = useState(false);

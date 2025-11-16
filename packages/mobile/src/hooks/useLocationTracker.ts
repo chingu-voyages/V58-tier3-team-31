@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 import type {
 	LocationCoords,
 	LocationSubscription,
-} from "@/lib/types/geolocation";
+} from "../types/geolocation";
 
 const useLocationTracker = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -49,11 +49,9 @@ const useLocationTracker = () => {
 				},
 				(newLocation) => {
 					setCurrentCoords(newLocation.coords);
-					console.log(`New Location: ${newLocation.coords}`);
+					console.log("New Location:", newLocation);
 				},
 			);
-
-			console.log("subscription:", subscription);
 
 			subscriptionRef.current = subscription;
 			setIsTracking(true);

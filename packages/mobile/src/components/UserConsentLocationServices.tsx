@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import useLocationTracker from "../hooks/useLocationTracker";
+import * as Linking from "expo-linking";
 
 const UserConsentLocationServices = () => {
 	const {
@@ -10,6 +11,10 @@ const UserConsentLocationServices = () => {
 		startTracking,
 		stopTracking,
 	} = useLocationTracker();
+
+	const openDeviceSettings = () => {
+		Linking.openSettings();
+	};
 
 	console.log("current coords:", currentCoords);
 
@@ -34,6 +39,10 @@ const UserConsentLocationServices = () => {
 					disabled={!isTracking}
 				></Button>
 				<Button title="Skip for Now"></Button>
+				<Button
+					title="Open Device Settings (Test)"
+					onPress={openDeviceSettings}
+				/>
 			</View>
 
 			<Text style={styles.statusText}>

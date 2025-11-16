@@ -30,8 +30,6 @@
 		}
 	},
 	"workspaces": [
-		"packages/*",
-		"mobile",
-		"api"
+		"packages/*"
 	]
 }

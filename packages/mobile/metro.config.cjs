@@ -1,7 +1,9 @@
 const { getDefaultConfig } = require("expo/metro-config");
+const { withNativeWind } = require("nativewind/metro");
 const path = require('path');
 
 const projectRoot = __dirname;
+console.log('metro project root:', projectRoot)
 const workspaceRoot = path.resolve(projectRoot, '../../');
 
 require('@expo/env').load(workspaceRoot, { force: true });
@@ -22,5 +24,8 @@ config.watchFolders = [
 // config.resolver.alias = {
 // 	"@": __dirname,
 // };
+
 config.resolver.assetExts.push('db');
-module.exports = config;
+// config = withNativeWind(config, { input: './src/global.css' })
+// module.exports = config;
+module.exports = withNativeWind(config, { input: './src/global.css' });

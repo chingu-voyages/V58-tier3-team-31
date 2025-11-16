@@ -6,7 +6,7 @@ const projectRoot = __dirname;
 console.log('metro project root:', projectRoot)
 const workspaceRoot = path.resolve(projectRoot, '../../');
 
-require('@expo/env').load(workspaceRoot, { force: true });
+// require('@expo/env').load(workspaceRoot, { force: true });
 
 const config = getDefaultConfig(projectRoot);
 

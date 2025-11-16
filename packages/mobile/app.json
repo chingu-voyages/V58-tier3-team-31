@@ -63,7 +63,9 @@
       "reactCompiler": true
     },
     "extra": {
-      "router": {},
+      "router": {
+        "root": "./src"
+      },
       "eas": {
         "projectId": "52f54e68-fac2-4b71-9293-077e1d172f46"
       }
@@ -71,3 +73,4 @@
     "owner": "v58-tier3-team-31"
   }
 }
+ 

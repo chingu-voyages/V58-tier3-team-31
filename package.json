@@ -1,5 +1,5 @@
 {
-	"name": "safestep",
+	"name": "safe-step",
 	"version": "0.0.1",
 	"type": "module",
 	"description": "",
@@ -8,7 +8,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"prepare": "lefthook install",
 		"lint": "pnpm exec biome check .",
-		"lint:fix": "pnpm exec biome format ."
+		"lint:fix": "pnpm exec biome format .",
+		"dev:mobile": "pnpm run --filter @safe-step/mobile start",
+		"dev:api": "pnpm run --filter @safe-step/api start",
+		"dev": "pnpm run dev:mobile & pnpm run dev:api"
 	},
 	"keywords": [],
 	"author": "",

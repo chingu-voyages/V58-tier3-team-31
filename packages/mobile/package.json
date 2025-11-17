@@ -2,13 +2,17 @@
   "name": "@safe-step/mobile",
   "main": "expo-router/entry",
   "version": "0.0.1",
+  "expo-router": {
+    "root": "./app"
+  },
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "deploy:web": "eas deploy"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

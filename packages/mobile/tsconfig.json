@@ -2,10 +2,14 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    // "useUnknownInCatchVariables": false,
+    "isolatedModules": true, // Good to enforce monorepo safety
+    "noUncheckedIndexedAccess": true, // Stricter array access
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@shared/*": ["../../packages/shared/*"]
     }
   },
   "include": [
@@ -13,5 +17,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "babel.config.js"  ]
 }

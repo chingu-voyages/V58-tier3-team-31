@@ -9,7 +9,6 @@
 		// See also https://aka.ms/tsconfig/module
 		"module": "nodenext",
 		"target": "esnext",
-		"jsx": "react-native",
 		"types": [],
 		"baseUrl": ".",
 		"paths": {

@@ -3,12 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { Alert } from "react-native";
 import type { Session, User } from "@supabase/supabase-js";
 
-const fetchSession = async (
-	setSession: (s: Session | null) => void,
-	setLoading: (l: boolean) => void,
-) => {
-	setLoading(true);
-
+const fetchSession = async () => {
 	try {
 		const {
 			data: { session },
@@ -17,23 +12,33 @@ const fetchSession = async (
 
 		if (error) {
 			Alert.alert(error.message);
+		} else {
+			return session;
 		}
-
-		setSession(session);
 	} catch (err) {
 		Alert.alert("Error fetching session state.");
 		console.error("Session fetch failed:", err);
-	} finally {
-		setLoading(false);
 	}
 };
 
 const useSession = () => {
 	const [session, setSession] = useState<Session | null>(null);
-	const [loading, setLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
-		fetchSession(setSession, setLoading);
+		const createSession = async () => {
+			setIsLoading(true);
+			try {
+				const session = await fetchSession();
+				setSession(session || null);
+			} catch (err) {
+				console.error("Failed to fetch session:", err);
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		createSession();
 
 		const { data: listener } = supabase.auth.onAuthStateChange(
 			(_event, session) => {
@@ -49,7 +54,7 @@ const useSession = () => {
 	return {
 		session,
 		user: session?.user as User | undefined,
-		loading,
+		isLoading,
 	};
 };
 

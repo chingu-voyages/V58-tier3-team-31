@@ -43,7 +43,7 @@
     ],
     "extra": {
       "router": {
-        "root": "./src"
+        "root": "./app"
       }
     },
     "experiments": {

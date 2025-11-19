@@ -4,6 +4,7 @@
     "slug": "mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "main": "expo-router/entry",
     "icon": "./assets/images/icon.png",
     "scheme": "mobileapp",
     "userInterfaceStyle": "automatic",
@@ -41,6 +42,11 @@
         }
       ]
     ],
+    "extra": {
+      "router": {
+        "root": "./app"
+      }
+    },
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true

@@ -19,6 +19,12 @@
 	"author": "",
 	"license": "ISC",
 	"packageManager": "pnpm@10.22.0",
+	"engines": {
+		"node": ">=18",
+		"pnpm": ">=8.0.0",
+		"npm": "please-use-pnpm",
+		"yarn": "please-use-pnpm"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.5",
 		"@commitlint/cli": "^20.1.0",

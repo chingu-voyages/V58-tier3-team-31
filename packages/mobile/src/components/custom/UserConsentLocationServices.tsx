@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import useLocationTracker from "@/hooks/useLocationTracker";
 
 const UserConsentLocationServices = () => {
@@ -15,7 +15,7 @@ const UserConsentLocationServices = () => {
 	return (
 		<View className="flex-1 justify-evenly items-center p-5 bg-white">
 			<View className="items-center">
-				<Text className="text-[22px] font-bold mb-6 text-pine-green">
+				<Text className="text-[22px] font-bold mb-6 text-primary-500">
 					Enable Location Services
 				</Text>
 				<Text className="mb-6 text-center">
@@ -30,8 +30,8 @@ const UserConsentLocationServices = () => {
 				<Button
 					onPress={startTracking}
 					disabled={isTracking}
-					variant="default"
-					className="bg-pine-green rounded-full h-13 w-full py-4"
+					variant="solid"
+					className="rounded-full h-13 w-full py-4"
 				>
 					<Text className="font-bold text-center text-white text-lg">
 						{isLoading ? "Starting..." : "Enable Location"}

@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
-import type {
-	LocationCoords,
-	LocationSubscription,
-} from "../types/geolocation";
+import type { LocationCoords, LocationSubscription } from "@/types/geolocation";
 
 const useLocationTracker = () => {
 	const [isLoading, setIsLoading] = useState(false);

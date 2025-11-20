@@ -4,6 +4,16 @@ pre-commit:
     biome:
       run: pnpm biome format --write
       stage_fixed: true
+    check-lockfiles:
+      run: |
+        if [ -f package-lock.json ] || [ -f yarn.lock ]; then
+          echo "❌ ERROR: package-lock.json or yarn.lock detected!"
+          echo "🚨 This project uses PNPM. Please:"
+          echo "   1. Remove package-lock.json or yarn.lock"
+          echo "   2. Run 'pnpm install' instead"
+          echo "   3. Use 'pnpm add <package> --filter <workspace>' to add dependencies"
+          exit 1
+        fi
 
 prepare-commit-msg:
   commands:

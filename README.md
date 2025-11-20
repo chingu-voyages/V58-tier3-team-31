@@ -15,6 +15,53 @@ in your `readme` feel free to replace the text we've provided here.
 
 ---
 
+## 📦 Dependency Management
+
+This project uses **PNPM** as the package manager for the monorepo. **Please do not use npm or yarn** for installing dependencies.
+
+### Common Commands
+
+```bash
+# Install all dependencies for all workspaces
+pnpm install
+
+# Add a dependency to a specific workspace
+pnpm add <package-name> --filter <workspace-name>
+
+# Add a dev dependency to a specific workspace
+pnpm add -D <package-name> --filter <workspace-name>
+
+# Run scripts in a specific workspace
+pnpm run <script> --filter <workspace-name>
+
+# Run scripts in all workspaces
+pnpm run -r <script>
+```
+
+### Available Workspaces
+
+- `@safestep/mobile` - React Native mobile app (packages/mobile)
+- `@safestep/api` - Backend API (packages/api)
+- `@safestep/shared` - Shared utilities and types (packages/shared)
+
+### Examples
+
+```bash
+# Add axios to the mobile app
+pnpm add axios --filter @safestep/mobile
+
+# Add a dev dependency to the API
+pnpm add -D nodemon --filter @safestep/api
+
+# Start the mobile app
+pnpm run start --filter @safestep/mobile
+
+# Run tests for all packages
+pnpm run -r test
+```
+
+---
+
 ## 🚀 Local Environment Setup (Supabase & React Native)
 
 To run the application against a local, isolated instance of the **Supabase backend**, follow these steps.

@@ -1,17 +1,64 @@
 # voyage-tasks
 
-Your project's `readme` is as important to success as your code. For 
+Your project's `readme` is as important to success as your code. For
 this reason you should put as much care into its creation and maintenance
 as you would any other component of the application.
 
 If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
+written by an experienced Chingu, be your starting point -
 [Keys to a well written README](https://tinyurl.com/yk3wubft).
 
 And before we go there's "one more thing"! Once you decide what to include
 in your `readme` feel free to replace the text we've provided here.
 
 > Own it & Make it your Own!
+
+---
+
+## 📦 Dependency Management
+
+This project uses **PNPM** as the package manager for the monorepo. **Please do not use npm or yarn** for installing dependencies.
+
+### Common Commands
+
+```bash
+# Install all dependencies for all workspaces
+pnpm install
+
+# Add a dependency to a specific workspace
+pnpm add <package-name> --filter <workspace-name>
+
+# Add a dev dependency to a specific workspace
+pnpm add -D <package-name> --filter <workspace-name>
+
+# Run scripts in a specific workspace
+pnpm run <script> --filter <workspace-name>
+
+# Run scripts in all workspaces
+pnpm run -r <script>
+```
+
+### Available Workspaces
+
+- `@safestep/mobile` - React Native mobile app (packages/mobile)
+- `@safestep/api` - Backend API (packages/api)
+- `@safestep/shared` - Shared utilities and types (packages/shared)
+
+### Examples
+
+```bash
+# Add axios to the mobile app
+pnpm add axios --filter @safestep/mobile
+
+# Add a dev dependency to the API
+pnpm add -D nodemon --filter @safestep/api
+
+# Start the mobile app
+pnpm run start --filter @safestep/mobile
+
+# Run tests for all packages
+pnpm run -r test
+```
 
 ---
 
@@ -24,11 +71,11 @@ To run the application against a local, isolated instance of the **Supabase back
 You need the following tools installed and running **globally** on your system:
 
 - **Supabase CLI:** Required for managing the local backend services.
-    ```bash
-    npm install -g supabase-cli
-    ```
+  ```bash
+  npm install -g supabase-cli
+  ```
 - **Docker:** Required to run the local Supabase services.
-    - **Installation:** Download and install **Docker Desktop** for your operating system (Mac, Windows, Linux) from the official Docker website. Ensure the Docker service is running before proceeding.
+  - **Installation:** Download and install **Docker Desktop** for your operating system (Mac, Windows, Linux) from the official Docker website. Ensure the Docker service is running before proceeding.
 
 ### Step 1: Start the Local Supabase Instance
 
@@ -64,6 +111,15 @@ If your project includes database changes (migrations), sync them to your local 
 
 ```bash
 supabase db reset
+
+```
+
+### Step 4: Start the Application
+
+Now you can start the application from the root of the project. This will run the api and the front-end.
+
+```bash
+pnpm run dev
 ```
 
 ## Team Documents
@@ -84,7 +140,7 @@ Meeting Agenda templates (located in the `/docs` directory in this repo):
 
 Everyone on your team should add their name along with a link to their GitHub
 & optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
+your repo access and to practice PR'ing with your team _before_ you start
 coding!
 
 - Daniel Afriyie: [GitHub](https://github.com/dk-afriyie) / [LinkedIn](https://linkedin.com/in/danielkafriyie)
@@ -95,10 +151,6 @@ coding!
 - Ruth Igwe-Oruta: [GitHub](https://github.com/Xondacc) / [LinkedIn](https://linkedin.com/in/ruthigwe-oruta)
 - Avy: [GitHub](https://github.com/a10823888w) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
+  ...
 
-
-
-
-
-   ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)

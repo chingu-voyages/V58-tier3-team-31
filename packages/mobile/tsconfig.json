@@ -3,9 +3,16 @@
   "compilerOptions": {
     "baseUrl": "src",
     "strict": true,
+    // "useUnknownInCatchVariables": false,
+    "isolatedModules": true, // Good to enforce monorepo safety
+    "noUncheckedIndexedAccess": true, // Stricter array access
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@shared/*": ["../../packages/shared/*"],
+      "tailwind.config": [
+        "./tailwind.config.js"
       ]
     }
   },
@@ -14,11 +21,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts",
+    "expo-env.d.ts", 
+    "babel.config.js",
     "nativewind-env.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
   ]
 }

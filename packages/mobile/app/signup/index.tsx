@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import Auth from "../components/Auth";
+import Auth from "../../components/custom/Auth";
 import useSession from "../hooks/useSession";
 
 export default function Signup() {

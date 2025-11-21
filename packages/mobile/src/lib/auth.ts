@@ -26,3 +26,13 @@ export const signUpWithEmail = async (
 
 	return session;
 };
+
+export const signUpRecoverer = async (userId: string): Promise<void> => {
+	const { data, error } = await supabase
+		.from("recoverers")
+		.insert([{ user_id: userId }]);
+
+	if (error) throw new Error(error.message);
+
+	if (data) return data;
+};

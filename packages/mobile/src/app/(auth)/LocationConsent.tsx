@@ -1,8 +1,8 @@
 import { View, Text } from "react-native";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import useLocationTracker from "@/hooks/useLocationTracker";
 
-const UserConsentLocationServices = () => {
+const LocationConsent = () => {
 	const {
 		isTracking,
 		isLoading,
@@ -70,4 +70,4 @@ const UserConsentLocationServices = () => {
 	);
 };
 
-export default UserConsentLocationServices;
+export default LocationConsent;

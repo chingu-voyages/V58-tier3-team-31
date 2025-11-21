@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile-app",
-    "slug": "mobile-app",
+    "name": "safestep",
+    "slug": "safestep",
     "version": "1.0.0",
     "orientation": "portrait",
     "main": "expo-router/entry",
@@ -10,7 +10,12 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": { 
+        "UIBackgroundModes": [
+          "location" 
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -20,12 +25,16 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions" : [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE LOCATION",
+        "FOREGROUND_SERVICE"
+      ]
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
     },
     "plugins": [
       "expo-router",
@@ -40,16 +49,29 @@
             "backgroundColor": "#000000"
           }
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Your app needs access to your location to provide guidance and track safety steps.", 
+          "locationAlwaysAndWhenInUsePermission": "Your app uses your location to monitor movement for safety alerts even when the app is closed or not in use."
+        }
       ]
+
     ],
-    "extra": {
-      "router": {
-        "root": "./app"
-      }
-    },
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {
+        "root": "./src/app"
+      },
+      "eas": {
+        "projectId": "52f54e68-fac2-4b71-9293-077e1d172f46"
+      }
+    },
+    "owner": "v58-tier3-team-31"
   }
 }
+ 

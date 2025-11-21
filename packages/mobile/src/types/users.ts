@@ -18,7 +18,7 @@ export interface Recoverer {
 	alertsEnabled: boolean;
 }
 
-export interface Sponsors {
+export interface Sponsor {
 	id: string;
 	userId: string;
 	firstName: string;

@@ -4,8 +4,6 @@ DROP TABLE if exists public.recoverers;
 DROP TABLE if exists public.sponsors;
 
 
-
-
 create table if not exists sponsors(
     id uuid primary key default gen_random_uuid(),
     user_id uuid,
@@ -28,8 +26,6 @@ create table if not exists recoverers(
     background_location_permission boolean NOT NULL DEFAULT false,
 
     alerts_enabled boolean NOT NULL default false,
-
-
 
     created_at timestamptz default now(),
     updated_at timestamptz default now(),

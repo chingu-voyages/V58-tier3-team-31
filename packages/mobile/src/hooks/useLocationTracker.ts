@@ -1,25 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
-import type { LocationCoords, LocationSubscription } from "@/types/geolocation";
+import type { LocationCoords } from "@/types/geolocation";
+import type { LocationSubscription } from "expo-location";
+import { useCallback } from "react";
 
-const useLocationTracker = () => {
+const useLocationTracker = (hasPermission?: boolean) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [isTracking, setIsTracking] = useState(false);
 	const [currentCoords, setCurrentCoords] = useState<LocationCoords>(null);
 	const subscriptionRef = useRef<LocationSubscription>(null);
+	const [hasForegroundPermission, setHasForegroundPermission] =
+		useState(hasPermission);
 
-	useEffect(() => {
-		return () => {
-			if (subscriptionRef.current) {
-				subscriptionRef.current.remove();
-				console.log("Tracking subscription was removed on unmount.");
-			}
-		};
-	}, []);
-
-	const startTracking = async () => {
+	const startTracking = useCallback(async () => {
 		if (isTracking || isLoading) return;
 		setIsLoading(true);
 		setError(null);
@@ -53,6 +48,7 @@ const useLocationTracker = () => {
 			subscriptionRef.current = subscription;
 			setIsTracking(true);
 			Alert.alert("Tracking started", "Location is now being monitored");
+			return true;
 		} catch (err) {
 			console.error("Error starting tracking:", err);
 
@@ -66,19 +62,40 @@ const useLocationTracker = () => {
 		} finally {
 			setIsLoading(false);
 		}
-	};
+	}, [isTracking, isLoading]);
 
-	const stopTracking = () => {
+	const stopTracking = useCallback(async () => {
 		if (subscriptionRef.current) {
-			console.log("subscription ref:", subscriptionRef.current);
 			subscriptionRef.current.remove();
 			subscriptionRef.current = null;
 			setIsTracking(false);
 			setCurrentCoords(null);
+			setIsLoading(false);
 			setError(null);
-			Alert.alert("Tracking stopped", "Location monitoring has been paused");
+			return Alert.alert(
+				"Tracking stopped",
+				"Location monitoring has been paused",
+			);
 		}
-	};
+	}, []);
+
+	useEffect(() => {
+		setHasForegroundPermission(hasPermission);
+	}, [hasPermission]);
+
+	useEffect(() => {
+		if (hasForegroundPermission) startTracking();
+		else if (!hasForegroundPermission) stopTracking();
+	}, [hasForegroundPermission, startTracking, stopTracking]);
+
+	useEffect(() => {
+		return () => {
+			if (subscriptionRef.current) {
+				subscriptionRef.current.remove();
+				console.log("Tracking subscription was removed on unmount.");
+			}
+		};
+	}, []);
 
 	return {
 		isTracking,
@@ -87,6 +104,7 @@ const useLocationTracker = () => {
 		currentCoords,
 		startTracking,
 		stopTracking,
+		hasForegroundPermission,
 	};
 };
 

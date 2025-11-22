@@ -3,10 +3,10 @@ import { createIcon } from "@gluestack-ui/core/icon/creator";
 import { Path } from "react-native-svg";
 import { tva } from "@gluestack-ui/utils/nativewind-utils";
 import { cssInterop } from "nativewind";
-import { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
+import type { VariantProps } from "@gluestack-ui/utils/nativewind-utils";
 import {
 	PrimitiveIcon,
-	IPrimitiveIcon,
+	type IPrimitiveIcon,
 	Svg,
 } from "@gluestack-ui/core/icon/creator";
 

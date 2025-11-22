@@ -33,7 +33,9 @@ export const signUpRecoverer = async (
 ): Promise<Recoverer | undefined> => {
 	const { data, error } = await supabase
 		.from("recoverers")
-		.insert([{ user_id: userId, first_name: "Default", last_name: "Default" }]);
+		.insert([{ user_id: userId, first_name: "Default", last_name: "Default" }])
+		.select()
+		.single();
 
 	if (error) throw new Error(error.message);
 

@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import { Heading } from "@/components/ui/heading";
 import { Image } from "@/components/ui/image";
 import { Button, ButtonText, ButtonSpinner } from "@/components/ui/button";
@@ -10,29 +10,19 @@ import { useState } from "react";
 import { signUpRecoverer, signUpSponsor } from "@/lib/auth";
 import { useRouter } from "expo-router";
 
-const roleSelection = () => {
+const RoleSelection = () => {
 	const router = useRouter();
 	const { session } = useSession();
 	const [isLoading, setIsLoading] = useState(false);
 
-	console.log("session user:", session?.user);
-
 	const handleSignUpSponsor = async () => {
+		if (!session?.user) return Alert.alert("User not found");
 		setIsLoading(true);
-
-		if (!session?.user) {
-			setIsLoading(false);
-			return Alert.alert("User not found");
-		}
-
 		try {
-			const sponsorData = await signUpSponsor(session?.user.id);
-
-			console.log("sponsor data:", sponsorData);
-
+			const sponsorData = await signUpSponsor(session.user.id);
 			if (sponsorData?.id) router.replace("/sponsor");
 		} catch (err) {
-			console.error("There was a problem signing up the sponsor:", err);
+			console.error(err);
 			if (err instanceof Error) Alert.alert(err.message);
 		} finally {
 			setIsLoading(false);
@@ -40,69 +30,73 @@ const roleSelection = () => {
 	};
 
 	const handleSignUpRecoverer = async () => {
+		if (!session?.user) return Alert.alert("User not found");
 		setIsLoading(true);
-
-		if (!session?.user) {
-			setIsLoading(false);
-			return Alert.alert("User not found");
-		}
-
 		try {
-			const recovererData = await signUpRecoverer(session?.user.id);
-			console.log("recoverer data:", recovererData);
+			const recovererData = await signUpRecoverer(session.user.id);
 			if (recovererData?.id) router.replace("/(auth)/locationConsent");
 		} catch (err) {
-			console.error("There was a problem signing up the recoverer:", err);
+			console.error(err);
 			if (err instanceof Error) Alert.alert(err.message);
 		} finally {
 			setIsLoading(false);
 		}
 	};
 
+	const buttonWidth = 150; // match the column width
+
 	return (
-		<VStack space="xl" className="flex-1 items-center justify-center flex-col">
-			<View className="flex flex-col items-center gap-5">
-				<Heading className="font-bold text-primary-500 text-4xl mt-auto">
+		<VStack space="xl" className="flex-1 items-center justify-center">
+			{/* Heading */}
+			<VStack space="sm" className="items-center">
+				<Heading className="font-bold text-primary-500 text-4xl">
 					What is your role?
 				</Heading>
 				<Text>Choose your role to get started</Text>
-				<HStack space="xl">
-					<VStack
-						space="md"
-						className="items-center max-w-[150px] border border-black"
-					>
-						<Image
-							alt="recoverer-image"
-							source={require("@/assets/images/brain.png")}
-							size="xl"
-						/>
-						<Text>Recoverer</Text>
-						<Text className="text-center">
-							Focus on your recovery with support
-						</Text>
-					</VStack>
-					<VStack
-						space="md"
-						className="items-center max-w-[150px] border border-black"
-					>
-						<Image
-							alt="sponsor-image"
-							source={require("@/assets/images/heart.png")}
-							size="xl"
-						/>
-						<Text>Sponsor</Text>
-						<Text className="text-center">
-							Support someone you care about on their journey
-						</Text>
-					</VStack>
-				</HStack>
-			</View>
-			<HStack space="xl">
-				<Button onPress={handleSignUpRecoverer}>
+			</VStack>
+
+			{/* Columns */}
+			<HStack space="xl" className="items-start">
+				<VStack
+					space="md"
+					className="items-center"
+					style={{ maxWidth: buttonWidth }}
+				>
+					<Image
+						alt="recoverer-image"
+						source={require("@/assets/images/brain.png")}
+						size="xl"
+					/>
+					<Text>Recoverer</Text>
+					<Text className="text-center">
+						Focus on your recovery with support
+					</Text>
+				</VStack>
+
+				<VStack
+					space="md"
+					className="items-center"
+					style={{ maxWidth: buttonWidth }}
+				>
+					<Image
+						alt="sponsor-image"
+						source={require("@/assets/images/heart.png")}
+						size="xl"
+					/>
+					<Text>Sponsor</Text>
+					<Text className="text-center">
+						Support someone you care about on their journey
+					</Text>
+				</VStack>
+			</HStack>
+
+			{/* Buttons */}
+			<HStack space="xl" className="mt-4">
+				<Button onPress={handleSignUpRecoverer} style={{ width: buttonWidth }}>
 					<ButtonText>Recoverer</ButtonText>
 					{isLoading && <ButtonSpinner color="white" />}
 				</Button>
-				<Button onPress={handleSignUpSponsor}>
+				<Button onPress={handleSignUpSponsor} style={{ width: buttonWidth }}>
 					<ButtonText>Sponsor</ButtonText>
 					{isLoading && <ButtonSpinner color="white" />}
 				</Button>
@@ -111,4 +105,4 @@ const roleSelection = () => {
 	);
 };
 
-export default roleSelection;
+export default RoleSelection;

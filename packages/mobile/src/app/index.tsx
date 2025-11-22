@@ -16,6 +16,7 @@ export default function Index() {
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
+	const [error, setError] = useState(false);
 
 	const handleSignUpWithEmail = async () => {
 		setIsLoading(true);
@@ -33,10 +34,21 @@ export default function Index() {
 
 			if (err instanceof Error) {
 				Alert.alert(err?.message);
+				setError(true);
 			}
 		} finally {
 			setIsLoading(false);
 		}
+	};
+
+	const onChangeEmail = (text: string) => {
+		setEmail(text);
+		setError(false);
+	};
+
+	const onChangePassword = (text: string) => {
+		setPassword(text);
+		setError(false);
 	};
 
 	return (
@@ -48,7 +60,7 @@ export default function Index() {
 					<Input variant="outline">
 						<InputField
 							value={email}
-							onChangeText={(text) => setEmail(text)}
+							onChangeText={(text) => onChangeEmail(text)}
 							autoCapitalize={"none"}
 						/>
 					</Input>
@@ -58,7 +70,7 @@ export default function Index() {
 					<Input variant="outline">
 						<InputField
 							value={password}
-							onChangeText={(text) => setPassword(text)}
+							onChangeText={(text) => onChangePassword(text)}
 							type={showPassword ? "text" : "password"}
 							secureTextEntry={!showPassword}
 						/>
@@ -73,7 +85,7 @@ export default function Index() {
 				<Button
 					variant="outline"
 					onPress={handleSignUpWithEmail}
-					disabled={isLoading}
+					disabled={isLoading || error}
 				>
 					<ButtonText>Sign up</ButtonText>
 					{isLoading && <ButtonSpinner color={"grey"} />}

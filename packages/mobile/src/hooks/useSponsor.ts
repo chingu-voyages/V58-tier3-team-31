@@ -26,12 +26,9 @@ const useSponsor = () => {
 	const [sponsor, setSponsor] = useState<Sponsor | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 
-	// console.log('sponsor:', sponsor)
-
 	useEffect(() => {
-		if (!session?.user) return Alert.alert("No user found");
-
 		const handleFetchSponsor = async () => {
+			if (!session?.user) return Alert.alert("No user found");
 			setIsLoading(true);
 
 			try {
@@ -46,7 +43,9 @@ const useSponsor = () => {
 			}
 		};
 
-		handleFetchSponsor();
+		if (session?.user) {
+			handleFetchSponsor();
+		}
 	}, [session?.user]);
 
 	return { sponsor, isLoading };

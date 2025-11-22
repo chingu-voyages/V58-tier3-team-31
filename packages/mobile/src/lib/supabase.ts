@@ -5,12 +5,13 @@ import { createClient, processLock } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseMobileUrl = process.env.EXPO_PUBLIC_MOBILE_SUPABASE_URL;
 
 if (!supabaseUrl || !supabaseAnonKey) {
 	throw new Error("Missing Supabase environment variables");
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+export const supabase = createClient(supabaseMobileUrl, supabaseAnonKey, {
 	auth: {
 		...(Platform.OS !== "web" ? { storage: AsyncStorage } : {}),
 		autoRefreshToken: true,

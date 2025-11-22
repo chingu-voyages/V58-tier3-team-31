@@ -2,24 +2,24 @@ import { Button, ButtonText, ButtonSpinner } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { View, Alert } from "react-native";
 import useLocationTracker from "@/hooks/useLocationTracker";
-import useSession from "@/hooks/useSession";
+import useRecoverer from "@/hooks/useRecoverer";
 import { disableForegroundPermission } from "@/lib/location";
 
 const RecovererDashboard = () => {
-	const { session } = useSession();
-	const { isTracking, isLoading, error, currentCoords, stopTracking } =
-		useLocationTracker();
+	const { recoverer, isLoading, handleFetchRecoverer } = useRecoverer();
+
+	const {
+		isTracking,
+		isLoading: isTrackerLoading,
+		currentCoords,
+	} = useLocationTracker(recoverer?.foregroundLocationPermission);
 
 	const handleDisableForegroundPermission = async () => {
-		if (!session?.user) return Alert.alert("User not found");
+		if (!recoverer?.id) return Alert.alert("User not found");
 
 		try {
-			stopTracking();
-
-			if (!error && !isTracking) {
-				const data = await disableForegroundPermission(session?.user?.id);
-				console.log("disable foreground permissions data:", data);
-			}
+			await disableForegroundPermission(recoverer?.id);
+			await handleFetchRecoverer();
 		} catch (err) {
 			console.error(
 				"There was a problem enabling foreground permissions:",
@@ -42,7 +42,12 @@ const RecovererDashboard = () => {
 			</Button>
 
 			<Text className="text-[16px] font-semibold mb-5 p-2 rounded bg-gray-100 text-center">
-				Status: {isTracking ? "🟢 Tracking Active" : "🔴 Tracking Stopped"}
+				Status:{" "}
+				{isTrackerLoading
+					? "Tracker Loading"
+					: isTracking
+						? "🟢 Tracking Active"
+						: "🔴 Tracking Stopped"}
 			</Text>
 
 			{currentCoords ? (

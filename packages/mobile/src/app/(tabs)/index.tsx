@@ -1,7 +1,7 @@
 import useSession from "@/hooks/useSession";
 import { useState } from "react";
 import { Alert } from "react-native";
-import { signInWithEmail } from "@/lib/auth";
+import { signInWithEmail, fetchUserRole } from "@/lib/auth";
 import { Button, ButtonSpinner, ButtonText } from "@/components/ui/button";
 import { Input, InputField, InputIcon, InputSlot } from "@/components/ui/input";
 import { FormControl } from "@/components/ui/form-control";
@@ -10,14 +10,17 @@ import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
 import { HStack } from "@/components/ui/hstack";
+import type { UserRole } from "@/types/users";
+import { useRouter } from "expo-router";
 
 export default function Auth() {
+	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 
-	const handleSignInWithEmail = async () => {
+	const handleSignInUserRole = async () => {
 		setIsLoading(true);
 		if (!email || !password) {
 			Alert.alert("Please enter your email and passsword to sign in");
@@ -25,7 +28,17 @@ export default function Auth() {
 			return;
 		}
 		try {
-			await signInWithEmail(email, password);
+			const user = await signInWithEmail(email, password);
+
+			if (!user) return Alert.alert("User not found");
+
+			const userRoleData: UserRole | null = await fetchUserRole(user.id);
+
+			if (!userRoleData) return Alert.alert("User role not found");
+			else if (userRoleData.role === "recoverer")
+				router.replace("/(private)/recoverer");
+			else if (userRoleData.role === "sponsor")
+				router.replace("/(private)/sponsor");
 		} catch (err) {
 			console.error("There was an unexpected error signing in:", err);
 
@@ -69,7 +82,7 @@ export default function Auth() {
 					</Input>
 				</VStack>
 				<HStack space="md" className="justify-end">
-					<Button onPress={handleSignInWithEmail} disabled={isLoading}>
+					<Button onPress={handleSignInUserRole} disabled={isLoading}>
 						<ButtonText>Log in</ButtonText>
 						{isLoading && <ButtonSpinner color="white" />}
 					</Button>

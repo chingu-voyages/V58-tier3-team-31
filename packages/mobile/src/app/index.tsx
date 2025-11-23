@@ -10,6 +10,7 @@ import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
 import { Link, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function Index() {
 	const router = useRouter();
@@ -53,9 +54,9 @@ export default function Index() {
 	};
 
 	return (
-		<SafeAreaView>
-			<FormControl className="mt-[80px] px-4">
-				<VStack className="">
+		<SafeAreaView className="bg-white">
+			<FormControl className="mt-[80px] px-8">
+				<VStack space="lg">
 					<VStack>
 						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
 							Login
@@ -99,27 +100,33 @@ export default function Index() {
 						</Link>
 					</VStack>
 
-					<VStack className="mt-[250px]">
+					<VStack className="mt-[250px] mb-16">
 						<Button
 							variant="outline"
 							onPress={handleSignUpWithEmail}
 							disabled={isLoading || error}
 							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
 						>
-							<ButtonText className="text-white text-center">Login</ButtonText>
+							<ButtonText className="text-white text-center text-[15px]">
+								Login
+							</ButtonText>
 							{isLoading && <ButtonSpinner color={"grey"} />}
 						</Button>
 						<Link
 							href="/"
-							className="text-center py-[16px] px-[100px] font-bold border-[0.2px] rounded-[100px] my-[16px]"
+							className="text-center py-[12px] border-[0.2px] rounded-[100px] my-[16px]"
 						>
-							Sign in with Google
+							<FontAwesome name="google" size={20} />
+							<Text className="font-bold text-[15px]">Sign in with Google</Text>
 						</Link>
 						<Link
 							href="/"
-							className="text-center py-[16px] px-[100px] font-bold border-[0.2px] rounded-[100px] "
+							className="text-center py-[12px] border-[0.2px] rounded-[100px] "
 						>
-							Sign in with Google
+							<FontAwesome name="apple" size={20} className="px-9" />
+							<Text className="font-bold text-[15px] px-2">
+								Sign in with Google
+							</Text>
 						</Link>
 					</VStack>
 				</VStack>

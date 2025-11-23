@@ -1,3 +1,6 @@
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { FormControl } from "@/components/ui/form-control";
 import { useState } from "react";
 import { Alert } from "react-native";
@@ -17,6 +20,8 @@ export default function Index() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState(false);
+
+	const Drawer = createDrawerNavigator();
 
 	const handleSignUpWithEmail = async () => {
 		setIsLoading(true);

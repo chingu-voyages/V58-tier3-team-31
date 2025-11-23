@@ -28,7 +28,7 @@ export default function Index() {
 		try {
 			const session = await signUpWithEmail(email, password);
 
-			if (session?.user) router.replace("/(auth)/roleSelection");
+			if (session?.user) router.push("/(auth)/roleSelection");
 		} catch (err) {
 			console.error("Unexpected error occurred signing up:", err);
 

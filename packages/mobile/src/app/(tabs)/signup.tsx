@@ -10,7 +10,7 @@ import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
 import { useRouter } from "expo-router";
 
-export default function Index() {
+export default function Signup() {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

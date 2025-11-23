@@ -51,8 +51,6 @@ export const signUpSponsor = async (
 		.select()
 		.single();
 
-	console.log("sign up sponsor data:", data);
-
 	if (error) throw new Error(error.message);
 	if (data) return data;
 };

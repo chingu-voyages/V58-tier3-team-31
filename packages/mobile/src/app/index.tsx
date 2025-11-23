@@ -1,3 +1,4 @@
+import { SafeAreaView } from "react-native-safe-area-context";
 import { FormControl } from "@/components/ui/form-control";
 import { useState } from "react";
 import { Alert } from "react-native";
@@ -52,45 +53,47 @@ export default function Index() {
 	};
 
 	return (
-		<FormControl className="p-4 border border-outline-200 rounded-lg w-full">
-			<VStack className="gap-4">
-				<Heading className="text-typography-900">Signup</Heading>
-				<VStack space="xs">
-					<Text className="text-typography-500">Email</Text>
-					<Input variant="outline">
-						<InputField
-							value={email}
-							onChangeText={(text) => onChangeEmail(text)}
-							autoCapitalize={"none"}
-						/>
-					</Input>
+		<SafeAreaView>
+			<FormControl className="p-4 border border-outline-200 rounded-lg w-full">
+				<VStack className="gap-4">
+					<Heading className="text-typography-900">Signup</Heading>
+					<VStack space="xs">
+						<Text className="text-typography-500">Email</Text>
+						<Input variant="outline">
+							<InputField
+								value={email}
+								onChangeText={(text) => onChangeEmail(text)}
+								autoCapitalize={"none"}
+							/>
+						</Input>
+					</VStack>
+					<VStack space="xs">
+						<Text className="text-typography-500">Password</Text>
+						<Input variant="outline">
+							<InputField
+								value={password}
+								onChangeText={(text) => onChangePassword(text)}
+								type={showPassword ? "text" : "password"}
+								secureTextEntry={!showPassword}
+							/>
+							<InputSlot
+								className="pr-3"
+								onPress={() => setShowPassword(!showPassword)}
+							>
+								<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+							</InputSlot>
+						</Input>
+					</VStack>
+					<Button
+						variant="outline"
+						onPress={handleSignUpWithEmail}
+						disabled={isLoading || error}
+					>
+						<ButtonText>Sign up</ButtonText>
+						{isLoading && <ButtonSpinner color={"grey"} />}
+					</Button>
 				</VStack>
-				<VStack space="xs">
-					<Text className="text-typography-500">Password</Text>
-					<Input variant="outline">
-						<InputField
-							value={password}
-							onChangeText={(text) => onChangePassword(text)}
-							type={showPassword ? "text" : "password"}
-							secureTextEntry={!showPassword}
-						/>
-						<InputSlot
-							className="pr-3"
-							onPress={() => setShowPassword(!showPassword)}
-						>
-							<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
-						</InputSlot>
-					</Input>
-				</VStack>
-				<Button
-					variant="outline"
-					onPress={handleSignUpWithEmail}
-					disabled={isLoading || error}
-				>
-					<ButtonText>Sign up</ButtonText>
-					{isLoading && <ButtonSpinner color={"grey"} />}
-				</Button>
-			</VStack>
-		</FormControl>
+			</FormControl>
+		</SafeAreaView>
 	);
 }

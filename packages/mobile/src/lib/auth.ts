@@ -79,8 +79,6 @@ export const fetchUserRole = async (
 		.eq("user_id", userId)
 		.maybeSingle();
 
-	console.log("recoverer data:", recovererData);
-
 	if (recovererError) throw new Error(recovererError.message);
 	if (recovererData) return { role: "recoverer", data: recovererData };
 
@@ -89,8 +87,6 @@ export const fetchUserRole = async (
 		.select("*")
 		.eq("user_id", userId)
 		.maybeSingle();
-
-	console.log("sponsor data:", sponsorData);
 
 	if (sponsorError) throw new Error(sponsorError.message);
 

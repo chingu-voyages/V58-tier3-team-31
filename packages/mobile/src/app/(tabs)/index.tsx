@@ -52,7 +52,7 @@ export default function Auth() {
 	return (
 		<FormControl className="p-4 border border-outline-200 rounded-lg w-full">
 			<VStack className="gap-4">
-				<Heading className="text-typography-900">Login</Heading>
+				<Heading className="text-typography-900">Sign In</Heading>
 				<VStack space="xs">
 					<Text className="text-typography-500">Email</Text>
 					<Input variant="outline">
@@ -82,7 +82,7 @@ export default function Auth() {
 				</VStack>
 				<HStack space="md" className="justify-end">
 					<Button onPress={handleSignInUserRole} disabled={isLoading}>
-						<ButtonText>Log in</ButtonText>
+						<ButtonText>Sign in</ButtonText>
 						{isLoading && <ButtonSpinner color="white" />}
 					</Button>
 				</HStack>

@@ -8,7 +8,8 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
 	const router = useRouter();
@@ -52,45 +53,77 @@ export default function Index() {
 	};
 
 	return (
-		<FormControl className="p-4 border border-outline-200 rounded-lg w-full">
-			<VStack className="gap-4">
-				<Heading className="text-typography-900">Signup</Heading>
-				<VStack space="xs">
-					<Text className="text-typography-500">Email</Text>
-					<Input variant="outline">
-						<InputField
-							value={email}
-							onChangeText={(text) => onChangeEmail(text)}
-							autoCapitalize={"none"}
-						/>
-					</Input>
-				</VStack>
-				<VStack space="xs">
-					<Text className="text-typography-500">Password</Text>
-					<Input variant="outline">
-						<InputField
-							value={password}
-							onChangeText={(text) => onChangePassword(text)}
-							type={showPassword ? "text" : "password"}
-							secureTextEntry={!showPassword}
-						/>
-						<InputSlot
-							className="pr-3"
-							onPress={() => setShowPassword(!showPassword)}
+		<SafeAreaView>
+			<FormControl className="mt-[80px] px-4">
+				<VStack className="">
+					<VStack>
+						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
+							Login
+						</Heading>
+						<Text className="text-[16px] mt-[24px] mb-[16px] font-light">
+							Login to your SafeStep account
+						</Text>
+
+						<VStack space="xs">
+							<Input variant="outline">
+								<InputField
+									value={email}
+									onChangeText={(text) => onChangeEmail(text)}
+									autoCapitalize={"none"}
+									placeholder="Email"
+								/>
+							</Input>
+						</VStack>
+
+						<VStack space="xs">
+							<Input variant="outline" className="my-[15px]">
+								<InputField
+									value={password}
+									onChangeText={(text) => onChangePassword(text)}
+									type={showPassword ? "text" : "password"}
+									secureTextEntry={!showPassword}
+									placeholder="Password"
+									className="p-[12px]"
+								/>
+								<InputSlot
+									className="pr-3"
+									onPress={() => setShowPassword(!showPassword)}
+								>
+									<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+								</InputSlot>
+							</Input>
+						</VStack>
+
+						<Link href="/" className="text-[#2b5f69]">
+							I forgot my Password
+						</Link>
+					</VStack>
+
+					<VStack className="mt-[250px]">
+						<Button
+							variant="outline"
+							onPress={handleSignUpWithEmail}
+							disabled={isLoading || error}
+							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
 						>
-							<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
-						</InputSlot>
-					</Input>
+							<ButtonText className="text-white text-center">Login</ButtonText>
+							{isLoading && <ButtonSpinner color={"grey"} />}
+						</Button>
+						<Link
+							href="/"
+							className="text-center py-[16px] px-[100px] font-bold border-[0.2px] rounded-[100px] my-[16px]"
+						>
+							Sign in with Google
+						</Link>
+						<Link
+							href="/"
+							className="text-center py-[16px] px-[100px] font-bold border-[0.2px] rounded-[100px] "
+						>
+							Sign in with Google
+						</Link>
+					</VStack>
 				</VStack>
-				<Button
-					variant="outline"
-					onPress={handleSignUpWithEmail}
-					disabled={isLoading || error}
-				>
-					<ButtonText>Sign up</ButtonText>
-					{isLoading && <ButtonSpinner color={"grey"} />}
-				</Button>
-			</VStack>
-		</FormControl>
+			</FormControl>
+		</SafeAreaView>
 	);
 }

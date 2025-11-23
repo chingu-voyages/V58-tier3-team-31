@@ -16,6 +16,15 @@ const RecovererLayout = () => {
 						),
 					}}
 				/>
+				<Tabs.Screen
+					name="logout"
+					options={{
+						title: "Log Out",
+						tabBarIcon: ({ color }) => (
+							<FontAwesome size={20} name="sign-out" color={color} />
+						),
+					}}
+				/>
 			</Tabs>
 			<StatusBar style="auto" />
 		</GluestackUIProvider>

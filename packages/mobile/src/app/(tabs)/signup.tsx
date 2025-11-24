@@ -8,7 +8,10 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome } from "@expo/vector-icons";
+import { Image } from "react-native";
 
 export default function Signup() {
 	const router = useRouter();
@@ -52,45 +55,79 @@ export default function Signup() {
 	};
 
 	return (
-		<FormControl className="p-4 border border-outline-200 rounded-lg w-full">
-			<VStack className="gap-4">
-				<Heading className="text-typography-900">Signup</Heading>
-				<VStack space="xs">
-					<Text className="text-typography-500">Email</Text>
-					<Input variant="outline">
-						<InputField
-							value={email}
-							onChangeText={(text) => onChangeEmail(text)}
-							autoCapitalize={"none"}
-						/>
-					</Input>
-				</VStack>
-				<VStack space="xs">
-					<Text className="text-typography-500">Password</Text>
-					<Input variant="outline">
-						<InputField
-							value={password}
-							onChangeText={(text) => onChangePassword(text)}
-							type={showPassword ? "text" : "password"}
-							secureTextEntry={!showPassword}
-						/>
-						<InputSlot
-							className="pr-3"
-							onPress={() => setShowPassword(!showPassword)}
+		<SafeAreaView className="bg-white">
+			<FormControl className="mt-[80px] px-8">
+				<VStack space="lg">
+					<VStack space="xs">
+						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
+							Create Your Account
+						</Heading>
+						<Text className="text-[16px] mt-[24px] mb-[16px] font-light">
+							Create an account to save your progress
+						</Text>
+						<Input variant="outline">
+							<InputField
+								value={email}
+								onChangeText={(text) => onChangeEmail(text)}
+								autoCapitalize={"none"}
+								placeholder="Email"
+							/>
+						</Input>
+					</VStack>
+					<VStack space="xs">
+						<Text className="text-typography-500">Password</Text>
+						<Input variant="outline" className="my-[15px]">
+							<InputField
+								value={password}
+								onChangeText={(text) => onChangePassword(text)}
+								type={showPassword ? "text" : "password"}
+								secureTextEntry={!showPassword}
+								placeholder="Password"
+								className="p-[12px]"
+							/>
+							<InputSlot
+								className="pr-3"
+								onPress={() => setShowPassword(!showPassword)}
+							>
+								<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+							</InputSlot>
+						</Input>
+					</VStack>
+					<VStack className="mt-[250px] mb-16">
+						<Button
+							variant="outline"
+							onPress={handleSignUpWithEmail}
+							disabled={isLoading || error}
+							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
 						>
-							<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
-						</InputSlot>
-					</Input>
+							<ButtonText className="text-white text-center text-[15px]">
+								Sign up
+							</ButtonText>
+							{isLoading && <ButtonSpinner color={"grey"} />}
+						</Button>
+						<Link
+							href="/"
+							className="py-[12px] border-[0.2px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2"
+						>
+							<Image
+								source={require("@/assets/images/google.png")}
+								style={{ width: 20, height: 20 }}
+							/>
+
+							<Text className="font-bold text-[15px]">Sign up with Google</Text>
+						</Link>
+						<Link
+							href="/"
+							className="text-center py-[12px] border-[0.2px] rounded-[100px] flex flex-row items-center justify-center"
+						>
+							<FontAwesome name="apple" size={22} className="px-2" />
+							<Text className="font-bold text-[15px] px-2">
+								Sign up with Apple
+							</Text>
+						</Link>
+					</VStack>
 				</VStack>
-				<Button
-					variant="outline"
-					onPress={handleSignUpWithEmail}
-					disabled={isLoading || error}
-				>
-					<ButtonText>Sign up</ButtonText>
-					{isLoading && <ButtonSpinner color={"grey"} />}
-				</Button>
-			</VStack>
-		</FormControl>
+			</FormControl>
+		</SafeAreaView>
 	);
 }

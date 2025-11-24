@@ -8,11 +8,13 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
-import { HStack } from "@/components/ui/hstack";
 import type { UserRole } from "@/types/users";
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome } from "@expo/vector-icons";
+import { Image } from "react-native";
 
-export default function Auth() {
+export default function LogIn() {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -50,43 +52,87 @@ export default function Auth() {
 	};
 
 	return (
-		<FormControl className="p-4 border border-outline-200 rounded-lg w-full">
-			<VStack className="gap-4">
-				<Heading className="text-typography-900">Sign In</Heading>
-				<VStack space="xs">
-					<Text className="text-typography-500">Email</Text>
-					<Input variant="outline">
-						<InputField
-							value={email}
-							onChangeText={(text) => setEmail(text)}
-							autoCapitalize={"none"}
-						/>
-					</Input>
-				</VStack>
-				<VStack space="xs">
-					<Text className="text-typography-500">Password</Text>
-					<Input variant="outline">
-						<InputField
-							value={password}
-							onChangeText={(text) => setPassword(text)}
-							type={showPassword ? "text" : "password"}
-							secureTextEntry={!showPassword}
-						/>
-						<InputSlot
-							className="pr-3"
-							onPress={() => setShowPassword(!showPassword)}
+		<SafeAreaView className="bg-white">
+			<FormControl className="mt-[80px] px-8">
+				<VStack space="lg">
+					<VStack>
+						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
+							Login
+						</Heading>
+						<Text className="text-[16px] mt-[24px] mb-[16px] font-light">
+							Login to your SafeStep account
+						</Text>
+
+						<VStack space="xs">
+							<Input variant="outline">
+								<InputField
+									value={email}
+									onChangeText={(text) => setEmail(text)}
+									autoCapitalize={"none"}
+									placeholder="Email"
+								/>
+							</Input>
+						</VStack>
+
+						<VStack space="xs">
+							<Input variant="outline" className="my-[15px]">
+								<InputField
+									value={password}
+									onChangeText={(text) => setPassword(text)}
+									type={showPassword ? "text" : "password"}
+									secureTextEntry={!showPassword}
+									placeholder="Password"
+									className="p-[12px]"
+								/>
+								<InputSlot
+									className="pr-3"
+									onPress={() => setShowPassword(!showPassword)}
+								>
+									<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+								</InputSlot>
+							</Input>
+						</VStack>
+
+						<Link href="/" className="text-[#2b5f69]">
+							I forgot my Password
+						</Link>
+					</VStack>
+
+					<VStack className="mt-[250px] mb-16">
+						<Button
+							variant="outline"
+							onPress={handleSignInUserRole}
+							disabled={isLoading}
+							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
 						>
-							<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
-						</InputSlot>
-					</Input>
+							<ButtonText className="text-white text-center text-[15px]">
+								Login
+							</ButtonText>
+							{isLoading && <ButtonSpinner color={"grey"} />}
+						</Button>
+						<Link
+							href="/"
+							className="py-[12px] border-[0.2px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2"
+						>
+							<Image
+								source={require("@/assets/images/google.png")}
+								style={{ width: 20, height: 20 }}
+							/>
+
+							<Text className="font-bold text-[15px]">Sign in with Google</Text>
+						</Link>
+						<Link
+							href="/"
+							className="text-center py-[12px] border-[0.2px] rounded-[100px] flex flex-row items-center justify-center"
+						>
+							<FontAwesome name="apple" size={22} className="px-2" />
+							<Text className="font-bold text-[15px] px-2">
+								Sign in with Apple
+							</Text>
+						</Link>
+					</VStack>
 				</VStack>
-				<HStack space="md" className="justify-end">
-					<Button onPress={handleSignInUserRole} disabled={isLoading}>
-						<ButtonText>Sign in</ButtonText>
-						{isLoading && <ButtonSpinner color="white" />}
-					</Button>
-				</HStack>
-			</VStack>
-		</FormControl>
+			</FormControl>
+		</SafeAreaView>
 	);
 }

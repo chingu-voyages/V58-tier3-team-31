@@ -67,6 +67,8 @@ export default function Auth() {
 							value={email}
 							onChangeText={(text) => setEmail(text)}
 							autoCapitalize={"none"}
+							autoCorrect={false}
+							keyboardType="email-address"
 						/>
 					</Input>
 				</VStack>
@@ -78,6 +80,8 @@ export default function Auth() {
 							onChangeText={(text) => setPassword(text)}
 							type={showPassword ? "text" : "password"}
 							secureTextEntry={!showPassword}
+							autoCapitalize="none"
+							autoCorrect={false}
 						/>
 						<InputSlot
 							className="pr-3"

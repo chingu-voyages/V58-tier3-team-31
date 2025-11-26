@@ -114,19 +114,17 @@ export default function Index() {
 						</Button>
 						<Link
 							href="/"
-							className="text-center py-[12px] border-[0.2px] rounded-[100px] my-[16px]"
+							className="text-center gap-3 py-[12px] border-[0.2px] rounded-[100px] my-[16px]"
 						>
 							<FontAwesome name="google" size={20} />
 							<Text className="font-bold text-[15px]">Sign in with Google</Text>
 						</Link>
 						<Link
 							href="/"
-							className="text-center py-[12px] border-[0.2px] rounded-[100px] "
+							className="text-center gap-3 py-[12px] border-[0.2px] rounded-[100px] "
 						>
-							<FontAwesome name="apple" size={20} className="px-9" />
-							<Text className="font-bold text-[15px] px-2">
-								Sign in with Google
-							</Text>
+							<FontAwesome name="apple" size={20} />
+							<Text className="font-bold text-[15px]">Sign in with Google</Text>
 						</Link>
 					</VStack>
 				</VStack>

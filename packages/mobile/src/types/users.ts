@@ -26,3 +26,7 @@ export interface Sponsor {
 	phone: string;
 	notificationsEnabled: boolean;
 }
+
+export type UserRole =
+	| { role: "recoverer"; data: Recoverer }
+	| { role: "sponsor"; data: Sponsor };

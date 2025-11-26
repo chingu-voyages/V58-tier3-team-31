@@ -1,110 +1,123 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
-import type { LocationCoords } from "@/types/geolocation";
 import type { LocationSubscription } from "expo-location";
-import { useCallback } from "react";
 
-const useLocationTracker = (hasPermission?: boolean) => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-	const [isTracking, setIsTracking] = useState(false);
-	const [currentCoords, setCurrentCoords] = useState<LocationCoords>(null);
+type IdleState = {
+	state: "idle";
+};
+
+type LoadingState = {
+	state: "loading";
+};
+
+type ErrorState = {
+	state: "error";
+	error: string;
+};
+
+type TrackingState = {
+	state: "tracking";
+	coords: Location.LocationObjectCoords;
+	timeStamp: number;
+};
+
+type StoppedState = {
+	state: "stopped";
+};
+
+export type LocationTrackerState =
+	| IdleState
+	| LoadingState
+	| ErrorState
+	| TrackingState
+	| StoppedState;
+
+const useLocationTracker = () => {
+	const [trackingState, setTrackingState] = useState<LocationTrackerState>({
+		state: "idle",
+	});
+
 	const subscriptionRef = useRef<LocationSubscription>(null);
-	const [hasForegroundPermission, setHasForegroundPermission] =
-		useState(hasPermission);
 
-	const startTracking = useCallback(async () => {
-		if (isTracking || isLoading) return;
-		setIsLoading(true);
-		setError(null);
+	const startTracking = async () => {
+		setTrackingState({ state: "loading" });
 
 		try {
 			const { status } = await Location.requestForegroundPermissionsAsync();
 
-			if (status !== "granted") {
-				setError("Permission to access location was denied");
-				Alert.alert(
-					"Permission Required",
-					"Location access is needed to start tracking",
-				);
-				return;
+			switch (status) {
+				case "denied":
+					setTrackingState({
+						state: "error",
+						error: "Permission to access location was denied",
+					});
+					Alert.alert(
+						"Permission Required",
+						"Location access is needed to start tracking",
+					);
+					return;
+
+				case "granted": {
+					const locationSubscription = await Location.watchPositionAsync(
+						{
+							accuracy: Location.Accuracy.BestForNavigation,
+							timeInterval: 5000,
+						},
+						(newLocation) => {
+							console.log({
+								newLocation,
+							});
+							setTrackingState({
+								state: "tracking",
+								coords: newLocation.coords,
+								timeStamp: newLocation.timestamp,
+							});
+						},
+						(error) => {
+							setTrackingState({
+								state: "error",
+								error: error,
+							});
+						},
+					);
+
+					subscriptionRef.current = locationSubscription;
+					return;
+				}
+
+				default: {
+					setTrackingState({
+						state: "error",
+						error: `Unhandled permission status: ${status}`,
+					});
+					return;
+				}
 			}
-
-			if (isTracking) return;
-
-			const subscription = await Location.watchPositionAsync(
-				{
-					accuracy: Location.Accuracy.BestForNavigation,
-					timeInterval: 5000,
-					distanceInterval: 10,
-				},
-				(newLocation) => {
-					setCurrentCoords(newLocation.coords);
-					console.log("New Location:", newLocation);
-				},
-			);
-
-			subscriptionRef.current = subscription;
-			setIsTracking(true);
-			Alert.alert("Tracking started", "Location is now being monitored");
-			return true;
-		} catch (err) {
-			console.error("Error starting tracking:", err);
-
-			if (err instanceof Error) {
-				setError(
-					err?.message || "An unknown error occured while starting tracking",
-				);
+		} catch (error) {
+			let errorMessage = "An unknown error occurred while starting tracking.";
+			if (error instanceof Error) {
+				errorMessage = error.message;
 			}
-			Alert.alert("Error", "Failed to start tracking");
-			setIsTracking(false);
-		} finally {
-			setIsLoading(false);
+			setTrackingState({
+				state: "error",
+				error: errorMessage,
+			});
 		}
-	}, [isTracking, isLoading]);
+	};
 
-	const stopTracking = useCallback(async () => {
+	const stopTracking = async () => {
 		if (subscriptionRef.current) {
-			subscriptionRef.current.remove();
+			await subscriptionRef.current.remove();
 			subscriptionRef.current = null;
-			setIsTracking(false);
-			setCurrentCoords(null);
-			setIsLoading(false);
-			setError(null);
-			return Alert.alert(
-				"Tracking stopped",
-				"Location monitoring has been paused",
-			);
 		}
-	}, []);
-
-	useEffect(() => {
-		setHasForegroundPermission(hasPermission);
-	}, [hasPermission]);
-
-	useEffect(() => {
-		if (hasForegroundPermission) startTracking();
-		else if (!hasForegroundPermission) stopTracking();
-	}, [hasForegroundPermission, startTracking, stopTracking]);
-
-	useEffect(() => {
-		return () => {
-			if (subscriptionRef.current) {
-				subscriptionRef.current.remove();
-				console.log("Tracking subscription was removed on unmount.");
-			}
-		};
-	}, []);
+		setTrackingState({ state: "stopped" });
+	};
 
 	return {
-		isTracking,
-		isLoading,
-		error,
-		currentCoords,
+		trackingState,
 		startTracking,
 		stopTracking,
-		hasForegroundPermission,
 	};
 };
 

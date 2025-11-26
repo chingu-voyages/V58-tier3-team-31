@@ -1,18 +1,7 @@
 import { supabase } from "@/lib/supabase";
 import type { Session } from "@supabase/supabase-js";
-import type { Recoverer, Sponsor } from "@/types/users";
-
-export const signInWithEmail = async (
-	email: string,
-	password: string,
-): Promise<void> => {
-	const { error } = await supabase.auth.signInWithPassword({
-		email,
-		password,
-	});
-
-	if (error) throw new Error(error.message);
-};
+import type { Recoverer, Sponsor, UserRole } from "@/types/users";
+import type { User } from "@supabase/supabase-js";
 
 export const signUpWithEmail = async (
 	email: string,
@@ -51,8 +40,6 @@ export const signUpSponsor = async (
 		.select()
 		.single();
 
-	console.log("sign up sponsor data:", data);
-
 	if (error) throw new Error(error.message);
 	if (data) return data;
 };
@@ -66,4 +53,44 @@ export const fetchRecoverer = async (userId: string) => {
 
 	if (error) throw new Error(error.message);
 	return data;
+};
+
+export const signInWithEmail = async (
+	email: string,
+	password: string,
+): Promise<User> => {
+	const { data, error } = await supabase.auth.signInWithPassword({
+		email,
+		password,
+	});
+
+	if (error) throw new Error(error.message);
+	if (!data.user) throw new Error("No user returned from Supabase.");
+
+	return data.user;
+};
+
+export const fetchUserRole = async (
+	userId: string,
+): Promise<UserRole | null> => {
+	const { data: recovererData, error: recovererError } = await supabase
+		.from("recoverers")
+		.select("*")
+		.eq("user_id", userId)
+		.maybeSingle();
+
+	if (recovererError) throw new Error(recovererError.message);
+	if (recovererData) return { role: "recoverer", data: recovererData };
+
+	const { data: sponsorData, error: sponsorError } = await supabase
+		.from("sponsors")
+		.select("*")
+		.eq("user_id", userId)
+		.maybeSingle();
+
+	if (sponsorError) throw new Error(sponsorError.message);
+
+	if (sponsorData) return { role: "sponsor", data: sponsorData };
+
+	return null;
 };

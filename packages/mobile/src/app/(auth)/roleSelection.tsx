@@ -20,7 +20,7 @@ const RoleSelection = () => {
 		setIsLoading(true);
 		try {
 			const sponsorData = await signUpSponsor(session.user.id);
-			if (sponsorData?.id) router.replace("/sponsor");
+			if (sponsorData?.id) router.navigate("/sponsor");
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) Alert.alert(err.message);
@@ -34,7 +34,7 @@ const RoleSelection = () => {
 		setIsLoading(true);
 		try {
 			const recovererData = await signUpRecoverer(session.user.id);
-			if (recovererData?.id) router.replace("/(auth)/locationConsent");
+			if (recovererData?.id) router.push("/(auth)/locationConsent");
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) Alert.alert(err.message);

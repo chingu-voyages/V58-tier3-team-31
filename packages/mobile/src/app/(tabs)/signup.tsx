@@ -8,7 +8,7 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
-import { useRouter, Link } from "expo-router";
+import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome } from "@expo/vector-icons";
 import { Image } from "react-native";

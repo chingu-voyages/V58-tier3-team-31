@@ -11,8 +11,10 @@ export const unstable_settings = {
 export default function RootLayout() {
 	return (
 		<GluestackUIProvider mode="dark">
-			<Stack>
-				<Stack.Screen name="index" options={{ headerShown: false }} />
+			<Stack screenOptions={{ headerShown: false }}>
+				<Stack.Screen name="(tabs)" />
+				<Stack.Screen name="(auth)" />
+				<Stack.Screen name="(private)" />
 			</Stack>
 			<StatusBar style="auto" />
 		</GluestackUIProvider>

@@ -1,76 +1,58 @@
 import { useState } from "react";
 import { Alert } from "react-native";
-import { signUpWithEmail } from "@/lib/auth";
+import { signInWithEmail, fetchUserRole } from "@/lib/auth";
 import { Button, ButtonSpinner, ButtonText } from "@/components/ui/button";
-import { Input, InputField, InputIcon, InputSlot } from "../ui/input";
-import { FormControl } from "../ui/form-control";
-import { VStack } from "../ui/vstack";
-import { Heading } from "../ui/heading";
-import { Text } from "../ui/text";
-import { EyeIcon, EyeOffIcon } from "../ui/icon";
+import { Input, InputField, InputIcon, InputSlot } from "@/components/ui/input";
+import { FormControl } from "@/components/ui/form-control";
+import { VStack } from "@/components/ui/vstack";
+import { Heading } from "@/components/ui/heading";
+import { Text } from "@/components/ui/text";
+import { EyeIcon, EyeOffIcon } from "@/components/ui/icon";
+import type { UserRole } from "@/types/users";
+import { useRouter, Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Image } from "react-native";
 
-export default function Auth() {
+export default function LogIn() {
+	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
-	const [error, setError] = useState(false);
 
-	const handleSignUpWithEmail = async () => {
+	const handleSignInUserRole = async () => {
 		setIsLoading(true);
 		if (!email || !password) {
-			Alert.alert("Please enter your email and passsword to sign up");
+			Alert.alert("Please enter your email and passsword to sign in");
 			setIsLoading(false);
 			return;
 		}
 		try {
-			await signUpWithEmail(email, password);
+			const user = await signInWithEmail(email, password);
+
+			if (!user) return Alert.alert("User not found");
+
+			const userRoleData: UserRole | null = await fetchUserRole(user.id);
+
+			if (!userRoleData) return Alert.alert("User role not found");
+			else if (userRoleData.role === "recoverer")
+				router.replace("/(private)/recoverer");
+			else if (userRoleData.role === "sponsor")
+				router.replace("/(private)/sponsor");
 		} catch (err) {
-			console.error("Unexpected error occurred signing up:", err);
+			console.error("There was an unexpected error signing in:", err);
 
 			if (err instanceof Error) {
-				Alert.alert(err?.message);
+				Alert.alert(err.message);
 			}
 		} finally {
 			setIsLoading(false);
 		}
 	};
 
-	// const handleSignInWithEmail = async () => {
-	// 	setIsLoading(true);
-	// 	if (!email || !password) {
-	// 		Alert.alert("Please enter your email and passsword to sign in");
-	// 		setIsLoading(false);
-	// 		return;
-	// 	}
-	// 	try {
-	// 		await signInWithEmail(email, password);
-	// 	} catch (err) {
-	// 		console.error("There was an unexpected error signing in:", err);
-
-	// 		if (err instanceof Error) {
-	// 			Alert.alert(err.message);
-	// 		}
-	// 	} finally {
-	// 		setIsLoading(false);
-	// 	}
-	// };
-
-	const onChangeEmail = (text: string) => {
-		setEmail(text);
-		setError(false);
-	};
-
-	const onChangePassword = (text: string) => {
-		setPassword(text);
-		setError(false);
-	};
-
 	return (
-		<SafeAreaView className="bg-white">
+		<SafeAreaView className="bg-white flex-1">
 			<FormControl className="mt-[80px] px-8">
 				<VStack space="lg">
 					<VStack>
@@ -85,7 +67,7 @@ export default function Auth() {
 							<Input variant="outline">
 								<InputField
 									value={email}
-									onChangeText={(text) => onChangeEmail(text)}
+									onChangeText={(text) => setEmail(text)}
 									autoCapitalize={"none"}
 									placeholder="Email"
 								/>
@@ -96,11 +78,10 @@ export default function Auth() {
 							<Input variant="outline" className="my-[15px]">
 								<InputField
 									value={password}
-									onChangeText={(text) => onChangePassword(text)}
+									onChangeText={(text) => setPassword(text)}
 									type={showPassword ? "text" : "password"}
 									secureTextEntry={!showPassword}
 									placeholder="Password"
-									className="p-[12px]"
 								/>
 								<InputSlot
 									className="pr-3"
@@ -116,11 +97,11 @@ export default function Auth() {
 						</Link>
 					</VStack>
 
-					<VStack className="mt-[250px] mb-16">
+					<VStack className="mt-[150px] mb-16">
 						<Button
 							variant="outline"
-							onPress={handleSignUpWithEmail}
-							disabled={isLoading || error}
+							onPress={handleSignInUserRole}
+							disabled={isLoading}
 							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
 						>
 							<ButtonText className="text-white text-center text-[15px]">
@@ -128,22 +109,22 @@ export default function Auth() {
 							</ButtonText>
 							{isLoading && <ButtonSpinner color={"grey"} />}
 						</Button>
-						<Link
-							href="/"
-							className="text-center py-[12px] border-[0.2px] rounded-[100px] my-[16px]"
-						>
-							<FontAwesome name="google" size={20} />
-							<Text className="font-bold text-[15px]">Sign in with Google</Text>
-						</Link>
-						<Link
-							href="/"
-							className="text-center py-[12px] border-[0.2px] rounded-[100px] "
-						>
-							<FontAwesome name="apple" size={20} className="px-9" />
-							<Text className="font-bold text-[15px] px-2">
+						<Button className="py-[6px] bg-white border-[1px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2">
+							<Image
+								source={require("@/assets/images/google.png")}
+								style={{ width: 20, height: 20 }}
+							/>
+
+							<ButtonText className="font-bold text-[15px] text-black">
 								Sign in with Google
+							</ButtonText>
+						</Button>
+						<Button className="text-center bg-white py-[6px] border-[1px] rounded-[100px] flex flex-row items-center justify-center">
+							<FontAwesome name="apple" size={22} className="px-2" />
+							<Text className="font-bold text-[15px] px-1 text-black">
+								Sign in with Apple
 							</Text>
-						</Link>
+						</Button>
 					</VStack>
 				</VStack>
 			</FormControl>

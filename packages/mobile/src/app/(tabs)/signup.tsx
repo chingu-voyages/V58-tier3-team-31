@@ -55,7 +55,7 @@ export default function Signup() {
 	};
 
 	return (
-		<SafeAreaView className="bg-white">
+		<SafeAreaView className="bg-white flex-1">
 			<FormControl className="mt-[80px] px-8">
 				<VStack space="lg">
 					<VStack space="xs">
@@ -73,17 +73,13 @@ export default function Signup() {
 								placeholder="Email"
 							/>
 						</Input>
-					</VStack>
-					<VStack space="xs">
-						<Text className="text-typography-500">Password</Text>
 						<Input variant="outline" className="my-[15px]">
 							<InputField
 								value={password}
 								onChangeText={(text) => onChangePassword(text)}
 								type={showPassword ? "text" : "password"}
 								secureTextEntry={!showPassword}
-								placeholder="Password"
-								className="p-[12px]"
+								placeholder="Password (8+ characters)"
 							/>
 							<InputSlot
 								className="pr-3"
@@ -92,8 +88,13 @@ export default function Signup() {
 								<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
 							</InputSlot>
 						</Input>
+						<Text className="text-xs">
+							By creating your account, you agree to SafeStep's{" "}
+							<Text className="underline text-xs">Terms &amp; Conditions</Text>{" "}
+							and <Text className="underline text-xs">Privacy Policy</Text>.
+						</Text>
 					</VStack>
-					<VStack className="mt-[250px] mb-16">
+					<VStack className="mt-[125px] mb-16">
 						<Button
 							variant="outline"
 							onPress={handleSignUpWithEmail}
@@ -105,26 +106,20 @@ export default function Signup() {
 							</ButtonText>
 							{isLoading && <ButtonSpinner color={"grey"} />}
 						</Button>
-						<Link
-							href="/"
-							className="py-[12px] border-[0.2px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2"
-						>
+						<Button className="py-[6px] bg-white border-[1px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2">
 							<Image
 								source={require("@/assets/images/google.png")}
 								style={{ width: 20, height: 20 }}
 							/>
 
 							<Text className="font-bold text-[15px]">Sign up with Google</Text>
-						</Link>
-						<Link
-							href="/"
-							className="text-center py-[12px] border-[0.2px] rounded-[100px] flex flex-row items-center justify-center"
-						>
-							<FontAwesome name="apple" size={22} className="px-2" />
+						</Button>
+						<Button className="text-center bg-white py-[6px] border-[1px] rounded-[100px] flex flex-row items-center justify-center">
+							<FontAwesome name="apple" size={22} className="px-1" />
 							<Text className="font-bold text-[15px] px-2">
 								Sign up with Apple
 							</Text>
-						</Link>
+						</Button>
 					</VStack>
 				</VStack>
 			</FormControl>

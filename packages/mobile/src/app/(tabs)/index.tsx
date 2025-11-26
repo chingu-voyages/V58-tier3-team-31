@@ -52,7 +52,7 @@ export default function LogIn() {
 	};
 
 	return (
-		<SafeAreaView className="bg-white">
+		<SafeAreaView className="bg-white flex-1">
 			<FormControl className="mt-[80px] px-8">
 				<VStack space="lg">
 					<VStack>
@@ -82,7 +82,6 @@ export default function LogIn() {
 									type={showPassword ? "text" : "password"}
 									secureTextEntry={!showPassword}
 									placeholder="Password"
-									className="p-[12px]"
 								/>
 								<InputSlot
 									className="pr-3"
@@ -98,7 +97,7 @@ export default function LogIn() {
 						</Link>
 					</VStack>
 
-					<VStack className="mt-[250px] mb-16">
+					<VStack className="mt-[150px] mb-16">
 						<Button
 							variant="outline"
 							onPress={handleSignInUserRole}
@@ -110,26 +109,22 @@ export default function LogIn() {
 							</ButtonText>
 							{isLoading && <ButtonSpinner color={"grey"} />}
 						</Button>
-						<Link
-							href="/"
-							className="py-[12px] border-[0.2px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2"
-						>
+						<Button className="py-[6px] bg-white border-[1px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2">
 							<Image
 								source={require("@/assets/images/google.png")}
 								style={{ width: 20, height: 20 }}
 							/>
 
-							<Text className="font-bold text-[15px]">Sign in with Google</Text>
-						</Link>
-						<Link
-							href="/"
-							className="text-center py-[12px] border-[0.2px] rounded-[100px] flex flex-row items-center justify-center"
-						>
+							<ButtonText className="font-bold text-[15px] text-black">
+								Sign in with Google
+							</ButtonText>
+						</Button>
+						<Button className="text-center bg-white py-[6px] border-[1px] rounded-[100px] flex flex-row items-center justify-center">
 							<FontAwesome name="apple" size={22} className="px-2" />
-							<Text className="font-bold text-[15px] px-2">
+							<Text className="font-bold text-[15px] px-1 text-black">
 								Sign in with Apple
 							</Text>
-						</Link>
+						</Button>
 					</VStack>
 				</VStack>
 			</FormControl>

@@ -4,6 +4,7 @@ import { FormControl } from "@/components/ui/form-control";
 import { Textarea, TextareaInput } from "@/components/ui/textarea";
 import { useState } from "react";
 import { Button, ButtonText, ButtonSpinner } from "@/components/ui/button";
+import { Alert } from "react-native";
 
 const inviteSponsor = () => {
 	const [email, setEmail] = useState("");
@@ -11,10 +12,46 @@ const inviteSponsor = () => {
 	const [message, setMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
-	const handler = () => {
+	const handler = async () => {
 		console.log("email:", email);
 		console.log("phone:", phone);
 		console.log("message:", message);
+		setIsLoading(true);
+
+		try {
+			const response = await fetch(
+				"http://localhost:54321/functions/v1/invite-sponsor",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						email,
+						phone,
+						message,
+					}),
+				},
+			);
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				console.error("Error sending email:", data);
+				Alert.alert("Failed to send invite. Check console for details");
+				return;
+			}
+
+			Alert.alert("Sponsor invidation sent successfully!");
+			setEmail("");
+			setPhone("");
+			setMessage("");
+		} catch (err) {
+			console.error("Network or server error:", err);
+			Alert.alert("Something went wrong. Check the console for details");
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (

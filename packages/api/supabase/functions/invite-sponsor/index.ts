@@ -1,7 +1,7 @@
 
 
 import { Resend } from "resend";
-import {create, getNumericDate } from "https://deno.land/x/djwt@v2.11/mod.ts";
+// import {create, getNumericDate } from "https://deno.land/x/djwt@v2.11/mod.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY") as string);
 
@@ -15,12 +15,12 @@ Deno.serve(async (req) => {
 
     if (!email) return new Response(JSON.stringify({ error: "Missing email"}), { status: 400});
 
-    const jwtSecret = Deno.env.get("SUPABASE_JWT_SECRET");
-    const token = await create(
-      {alg: "HS256", typ: "JWT"},
-      { email, exp: getNumericDate(60 * 60)},
-      jwtSecret
-    );
+    // const jwtSecret = Deno.env.get("SUPABASE_JWT_SECRET");
+    // const token = await create(
+    //   {alg: "HS256", typ: "JWT"},
+    //   { email, exp: getNumericDate(60 * 60)},
+    //   jwtSecret
+    // );
 
     const registrationUrl = "http://localhost:8081/signup"
 

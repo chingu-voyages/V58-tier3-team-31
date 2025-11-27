@@ -42,5 +42,8 @@
 	},
 	"workspaces": [
 		"packages/*"
-	]
+	],
+	"dependencies": {
+		"@gluestack-ui/textarea": "^0.1.25"
+	}
 }

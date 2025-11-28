@@ -31,7 +31,7 @@ export default function Signup() {
 		try {
 			const session = await signUpWithEmail(email, password);
 
-			if (session?.user) router.push("/(auth)/roleSelection");
+			if (session?.user) router.push("/(auth)/privacyConsent");
 		} catch (err) {
 			console.error("Unexpected error occurred signing up:", err);
 

@@ -5,42 +5,43 @@ import { Textarea, TextareaInput } from "@/components/ui/textarea";
 import { useState } from "react";
 import { Button, ButtonText, ButtonSpinner } from "@/components/ui/button";
 import { Alert } from "react-native";
+import useSession from "@/hooks/useSession";
+import { supabase } from "@/lib/supabase";
 
 const inviteSponsor = () => {
+	const { session } = useSession();
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [message, setMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
 	const handler = async () => {
-		console.log("email:", email);
-		console.log("phone:", phone);
-		console.log("message:", message);
+		console.log("session in handler:", session);
 		setIsLoading(true);
 
 		try {
-			const response = await fetch(
-				"http://localhost:54321/functions/v1/invite-sponsor",
+			const { data, error } = await supabase.functions.invoke(
+				"invite-sponsor",
 				{
-					method: "POST",
+					body: JSON.stringify({
+						message: message,
+						phone: phone,
+						email: email,
+					}),
 					headers: {
 						"Content-Type": "application/json",
+						Authorization: `Bearer ${session?.access_token}`,
 					},
-					body: JSON.stringify({
-						email,
-						phone,
-						message,
-					}),
 				},
 			);
 
-			const data = await response.json();
-
-			if (!response.ok) {
-				console.error("Error sending email:", data);
+			if (error) {
+				console.error("Error sending email:", error);
 				Alert.alert("Failed to send invite. Check console for details");
 				return;
 			}
+
+			console.log("edge function data:", data);
 
 			Alert.alert("Sponsor invidation sent successfully!");
 			setEmail("");

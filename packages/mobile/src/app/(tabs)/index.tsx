@@ -53,15 +53,13 @@ export default function LogIn() {
 
 	return (
 		<SafeAreaView className="bg-white flex-1">
-			<FormControl className="mt-[80px] px-8">
-				<VStack space="lg">
-					<VStack>
-						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
+			<VStack space="lg" className="flex-1 justify-between p-8">
+				<FormControl className="flex-1 justify-between p-8">
+					<VStack space="md">
+						<Heading className="text-center text-3xl font-bold text-primary-500">
 							Login
 						</Heading>
-						<Text className="text-[16px] mt-[24px] mb-[16px] font-light">
-							Login to your SafeStep account
-						</Text>
+						<Text className="font-light">Login to your SafeStep account</Text>
 
 						<VStack space="xs">
 							<Input variant="outline">
@@ -92,42 +90,38 @@ export default function LogIn() {
 							</Input>
 						</VStack>
 
-						<Link href="/" className="text-[#2b5f69]">
-							I forgot my Password
-						</Link>
+						<Link href="/">I forgot my Password</Link>
 					</VStack>
 
-					<VStack className="mt-[150px] mb-16">
+					<VStack space="lg">
 						<Button
 							variant="outline"
 							onPress={handleSignInUserRole}
 							disabled={isLoading}
-							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
+							className="rounded-[100px] bg-primary-500 border border-primary-500"
 						>
-							<ButtonText className="text-white text-center text-[15px]">
-								Login
-							</ButtonText>
+							<ButtonText className="text-white text-center">Login</ButtonText>
 							{isLoading && <ButtonSpinner color={"grey"} />}
 						</Button>
-						<Button className="py-[6px] bg-white border-[1px] rounded-[100px] my-[16px] flex flex-row justify-center items-center gap-2">
+						<Button className="py-[6px] bg-white border-[1px] rounded-[100px] flex flex-row justify-center items-center gap-2">
 							<Image
 								source={require("@/assets/images/google.png")}
 								style={{ width: 20, height: 20 }}
 							/>
 
-							<ButtonText className="font-bold text-[15px] text-black">
+							<ButtonText className="font-bold text-black">
 								Sign in with Google
 							</ButtonText>
 						</Button>
 						<Button className="text-center bg-white py-[6px] border-[1px] rounded-[100px] flex flex-row items-center justify-center">
 							<FontAwesome name="apple" size={22} className="px-2" />
-							<Text className="font-bold text-[15px] px-1 text-black">
+							<ButtonText className="font-bold text-black">
 								Sign in with Apple
-							</Text>
+							</ButtonText>
 						</Button>
 					</VStack>
-				</VStack>
-			</FormControl>
+				</FormControl>
+			</VStack>
 		</SafeAreaView>
 	);
 }

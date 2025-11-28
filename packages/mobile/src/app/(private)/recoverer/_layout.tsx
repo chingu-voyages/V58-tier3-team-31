@@ -30,6 +30,10 @@ const RecovererLayout = () => {
 					name="addSponsor"
 					options={{ href: null, headerShown: false }}
 				/>
+				<Tabs.Screen
+					name="inviteSponsor"
+					options={{ href: null, headerShown: false }}
+				/>
 			</Tabs>
 			<StatusBar style="auto" />
 		</GluestackUIProvider>

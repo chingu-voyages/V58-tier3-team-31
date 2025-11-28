@@ -59,7 +59,7 @@ export default function Signup() {
 			<FormControl className="mt-[80px] px-8">
 				<VStack space="lg">
 					<VStack space="xs">
-						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
+						<Heading className="text-center text-[25px] py-[4px] font-bold text-primary-500">
 							Create Your Account
 						</Heading>
 						<Text className="text-[16px] mt-[24px] mb-[16px] font-light">

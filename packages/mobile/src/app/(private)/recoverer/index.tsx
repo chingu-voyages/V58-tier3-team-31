@@ -6,7 +6,7 @@ import useRecoverer from "@/hooks/useRecoverer";
 import { useEffect } from "react";
 
 const RecovererDashboard = () => {
-	const { isLoading } = useRecoverer();
+	const { recoverer, isLoading } = useRecoverer();
 
 	const { startTracking, stopTracking, trackingState } = useLocationTracker();
 
@@ -16,6 +16,7 @@ const RecovererDashboard = () => {
 
 	return (
 		<View>
+			{recoverer && <Text>Hello, {recoverer.firstName}</Text>}
 			{trackingState.state === "stopped" && (
 				<Button
 					onPress={startTracking}

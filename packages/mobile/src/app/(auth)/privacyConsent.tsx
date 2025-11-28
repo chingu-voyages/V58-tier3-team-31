@@ -15,6 +15,7 @@ import { useRouter } from "expo-router";
 
 const PrivacyConsent = () => {
 	const router = useRouter();
+
 	const [isChecked, setIsChecked] = useState(false);
 
 	return (

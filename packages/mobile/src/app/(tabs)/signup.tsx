@@ -12,18 +12,21 @@ import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome } from "@expo/vector-icons";
 import { Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Signup() {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [firstName, setFirstname] = useState("");
+	const [lastName, setLastName] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState(false);
 
 	const handleSignUpWithEmail = async () => {
 		setIsLoading(true);
-		if (!email || !password) {
+		if (!email || !password || !lastName || !firstName) {
 			Alert.alert("Please enter your email and passsword to sign up");
 			setIsLoading(false);
 			return;
@@ -31,7 +34,12 @@ export default function Signup() {
 		try {
 			const session = await signUpWithEmail(email, password);
 
-			if (session?.user) router.push("/(auth)/privacyConsent");
+			if (session?.user) {
+				await AsyncStorage.setItem("firstName", firstName);
+				await AsyncStorage.setItem("lastName", lastName);
+
+				router.push("/roleSelection");
+			}
 		} catch (err) {
 			console.error("Unexpected error occurred signing up:", err);
 
@@ -58,13 +66,29 @@ export default function Signup() {
 		<SafeAreaView className="bg-white flex-1">
 			<FormControl className="mt-[80px] px-8">
 				<VStack space="lg">
-					<VStack space="xs">
-						<Heading className="text-center text-[25px] py-[4px] font-bold text-[#2b5f69]">
+					<VStack space="md">
+						<Heading className="text-center text-[25px] py-[4px] font-bold text-primary-500">
 							Create Your Account
 						</Heading>
-						<Text className="text-[16px] mt-[24px] mb-[16px] font-light">
+						<Text className="text-sm font-light">
 							Create an account to save your progress
 						</Text>
+						<Input variant="outline">
+							<InputField
+								value={firstName}
+								onChangeText={(text) => setFirstname(text)}
+								autoCapitalize={"none"}
+								placeholder="First Name"
+							/>
+						</Input>
+						<Input variant="outline">
+							<InputField
+								value={lastName}
+								onChangeText={(text) => setLastName(text)}
+								autoCapitalize={"none"}
+								placeholder="Last Name"
+							/>
+						</Input>
 						<Input variant="outline">
 							<InputField
 								value={email}
@@ -73,7 +97,7 @@ export default function Signup() {
 								placeholder="Email"
 							/>
 						</Input>
-						<Input variant="outline" className="my-[15px]">
+						<Input variant="outline" className="">
 							<InputField
 								value={password}
 								onChangeText={(text) => onChangePassword(text)}
@@ -82,7 +106,7 @@ export default function Signup() {
 								placeholder="Password (8+ characters)"
 							/>
 							<InputSlot
-								className="pr-3"
+								className=""
 								onPress={() => setShowPassword(!showPassword)}
 							>
 								<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
@@ -99,7 +123,7 @@ export default function Signup() {
 							variant="outline"
 							onPress={handleSignUpWithEmail}
 							disabled={isLoading || error}
-							className="rounded-[100px] bg-[#2b5f69] border border-[#2b5f69]"
+							className="rounded-[100px] bg-primary-500 border border-primary-500"
 						>
 							<ButtonText className="text-white text-center text-[15px]">
 								Sign up

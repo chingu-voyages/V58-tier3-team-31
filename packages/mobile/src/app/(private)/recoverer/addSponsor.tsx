@@ -5,7 +5,7 @@ import { Text } from "@/components/ui/text";
 import { Link } from "expo-router";
 import { Image } from "react-native";
 
-const mySpnsor = () => {
+const inviteSponsor = () => {
 	return (
 		<SafeAreaView className="p-[30px] bg-white">
 			<VStack>
@@ -42,4 +42,4 @@ const mySpnsor = () => {
 	);
 };
 
-export default mySpnsor;
+export default inviteSponsor;

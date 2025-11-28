@@ -11,8 +11,10 @@ import {
 import { CheckIcon } from "@/components/ui/icon";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
 
 const PrivacyConsent = () => {
+	const router = useRouter();
 	const [isChecked, setIsChecked] = useState(false);
 
 	return (
@@ -45,7 +47,11 @@ const PrivacyConsent = () => {
 							I agree to the Privacy Policy and Terms of Service
 						</CheckboxLabel>
 					</Checkbox>
-					<Button className="w-full rounded-[100px]" isDisabled={!isChecked}>
+					<Button
+						className="w-full rounded-[100px]"
+						isDisabled={!isChecked}
+						onPress={() => router.push("/roleSelection")}
+					>
 						<ButtonText>
 							{isChecked ? "Continue" : "Accept & Continue"}
 						</ButtonText>

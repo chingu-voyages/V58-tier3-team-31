@@ -46,7 +46,7 @@ const RoleSelection = () => {
 	const buttonWidth = 150; // match the column width
 
 	return (
-		<VStack space="xl" className="flex-1 items-center justify-center">
+		<VStack space="xl" className="flex-1 items-center justify-center bg-white">
 			{/* Heading */}
 			<VStack space="sm" className="items-center">
 				<Heading className="font-bold text-primary-500 text-4xl">

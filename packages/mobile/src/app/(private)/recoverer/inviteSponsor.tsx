@@ -19,8 +19,7 @@ const inviteSponsor = () => {
 	const [message, setMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
-	const handler = async () => {
-		console.log("session in handler:", session);
+	const handleInviteSponsor = async () => {
 		setIsLoading(true);
 
 		try {
@@ -110,7 +109,7 @@ const inviteSponsor = () => {
 						</Text>
 					</HStack>
 				</VStack>
-				<Button className="rounded-[100px]">
+				<Button onPress={handleInviteSponsor} className="rounded-[100px]">
 					<ButtonText>Send Invitation</ButtonText>
 					{isLoading && <ButtonSpinner />}
 				</Button>

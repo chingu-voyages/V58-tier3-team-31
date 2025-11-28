@@ -15,7 +15,7 @@ const mySpnsor = () => {
 
 				<VStack>
 					<Image
-						source={require("@/assets/images/map.jpeg")}
+						source={require("@/assets/images/mySponsorImg.png")}
 						style={{
 							width: 330,
 							height: 350,

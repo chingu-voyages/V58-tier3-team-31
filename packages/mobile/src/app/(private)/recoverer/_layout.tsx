@@ -17,6 +17,15 @@ const RecovererLayout = () => {
 					}}
 				/>
 				<Tabs.Screen
+					name="locationMap"
+					options={{
+						title: "Map",
+						tabBarIcon: ({ color }) => (
+							<FontAwesome size={20} name="map" color={color} />
+						),
+					}}
+				/>
+				<Tabs.Screen
 					name="logout"
 					options={{
 						title: "Log Out",

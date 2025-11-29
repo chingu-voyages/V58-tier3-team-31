@@ -16,7 +16,7 @@ const RecovererDashboard = () => {
 
 	return (
 		<View>
-			{recoverer && <Text>Hello, {recoverer.firstName}</Text>}
+			{recoverer && <Text>Welcome, {recoverer.firstName}</Text>}
 			{trackingState.state === "stopped" && (
 				<Button
 					onPress={startTracking}

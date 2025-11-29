@@ -49,11 +49,12 @@ const PrivacyConsent = () => {
 						</CheckboxLabel>
 					</Checkbox>
 					<Button
-						className="w-full rounded-[100px]"
+						className="w-full rounded-[100px] text-center flex justify-center items-center"
 						isDisabled={!isChecked}
+						size="lg"
 						onPress={() => router.push("/roleSelection")}
 					>
-						<ButtonText>
+						<ButtonText className="text-center m-auto">
 							{isChecked ? "Continue" : "Accept & Continue"}
 						</ButtonText>
 					</Button>

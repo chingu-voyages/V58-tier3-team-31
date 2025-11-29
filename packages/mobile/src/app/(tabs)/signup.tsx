@@ -38,7 +38,7 @@ export default function Signup() {
 				await AsyncStorage.setItem("firstName", firstName);
 				await AsyncStorage.setItem("lastName", lastName);
 
-				router.push("/roleSelection");
+				router.push("/(auth)/privacyConsent");
 			}
 		} catch (err) {
 			console.error("Unexpected error occurred signing up:", err);
@@ -106,7 +106,7 @@ export default function Signup() {
 								placeholder="Password (8+ characters)"
 							/>
 							<InputSlot
-								className=""
+								className="p-2"
 								onPress={() => setShowPassword(!showPassword)}
 							>
 								<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />

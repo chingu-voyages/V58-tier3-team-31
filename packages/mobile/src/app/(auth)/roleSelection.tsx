@@ -46,7 +46,7 @@ const RoleSelection = () => {
 
 			if (sponsorData?.id) {
 				await AsyncStorage.multiRemove(["firstName", "lastName"]);
-				router.navigate("/sponsor");
+				router.replace("/sponsor");
 			}
 		} catch (err) {
 			console.error(err);
@@ -71,7 +71,7 @@ const RoleSelection = () => {
 			);
 			if (recovererData?.id) {
 				await AsyncStorage.multiRemove(["firstName", "lastName"]);
-				router.push("/(auth)/locationConsent");
+				router.replace("/(auth)/locationConsent");
 			}
 		} catch (err) {
 			console.error(err);

@@ -6,8 +6,6 @@ import { Text } from "react-native-svg";
 const CurrentLocationMap = () => {
 	const { trackingState, startTracking } = useLocationTracker();
 
-	console.log("tracking state:", trackingState);
-
 	useEffect(() => {
 		startTracking();
 	}, [startTracking]);

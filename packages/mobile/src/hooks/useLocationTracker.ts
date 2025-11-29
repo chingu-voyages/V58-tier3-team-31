@@ -38,6 +38,8 @@ const useLocationTracker = () => {
 		state: "idle",
 	});
 
+	// console.log('use location tracking state:', trackingState)
+
 	const subscriptionRef = useRef<LocationSubscription>(null);
 
 	const startTracking = async () => {

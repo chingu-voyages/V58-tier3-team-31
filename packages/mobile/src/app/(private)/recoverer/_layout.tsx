@@ -17,7 +17,7 @@ const RecovererLayout = () => {
 					}}
 				/>
 				<Tabs.Screen
-					name="locationMap"
+					name="currentLocationMap"
 					options={{
 						title: "Map",
 						tabBarIcon: ({ color }) => (

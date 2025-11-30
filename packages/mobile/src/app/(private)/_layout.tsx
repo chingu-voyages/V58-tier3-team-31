@@ -43,7 +43,7 @@ const PrivateLayout = () => {
 				/>
 				<Stack.Screen
 					name="recovererSettings"
-					options={{ title: "Settings" }}
+					options={{ title: "", headerShown: false }}
 				/>
 			</Stack>
 			<StatusBar style="auto" />

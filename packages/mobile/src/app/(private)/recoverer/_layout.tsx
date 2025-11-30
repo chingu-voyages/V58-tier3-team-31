@@ -10,6 +10,7 @@ const RecovererLayout = () => {
 				<Tabs.Screen
 					name="index"
 					options={{
+						headerShown: false,
 						title: "Home",
 						tabBarIcon: ({ color }) => (
 							<FontAwesome size={20} name="home" color={color} />

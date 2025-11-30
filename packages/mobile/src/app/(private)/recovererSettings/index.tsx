@@ -2,14 +2,31 @@ import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
 import { FontAwesome } from "@expo/vector-icons";
-import { View } from "react-native";
+import { View, Switch } from "react-native";
 import { Text } from "@/components/ui/text";
 import { Icon, ChevronRightIcon } from "@/components/ui/icon";
+import { useState } from "react";
+import useLocationTracker from "@/hooks/useLocationTracker";
 
 const recovererSettings = () => {
+	const { startTracking, stopTracking, trackingState } = useLocationTracker();
+	const [isEnabled, setIsEnabled] = useState(false);
+
+	const toggleSwitch = () => {
+		setIsEnabled((prev) => {
+			const newState = !prev;
+
+			if (newState) startTracking();
+			else stopTracking();
+
+			return newState;
+		});
+	};
+
 	return (
-		<VStack className="flex-1 bg-white p-10" space="3xl">
-			<VStack space="md">
+		<VStack className="flex-1 bg-white p-10 justify-center" space="4xl">
+			{trackingState.state === "tracking" && <Text>Tracking</Text>}
+			<VStack space="md" className="justify-start">
 				<Heading className="text-2xl text-primary-500">Account Details</Heading>
 				<HStack className="items-center justify-between">
 					<View className="flex flex-row items-center gap-3">
@@ -33,7 +50,7 @@ const recovererSettings = () => {
 						</View>
 						<Text>Enable Location Tracking</Text>
 					</View>
-					<Icon as={ChevronRightIcon} />
+					<Switch value={isEnabled} onValueChange={toggleSwitch} />
 				</HStack>
 			</VStack>
 

@@ -13,7 +13,7 @@
       "supportsTablet": true,
       "infoPlist": { 
         "UIBackgroundModes": [
-          "location" 
+          ["location", "fetch", "remote-notification" ]
         ]
       }
     },
@@ -54,7 +54,8 @@
         "expo-location",
         {
           "locationWhenInUsePermission": "Your app needs access to your location to provide guidance and track safety steps.", 
-          "locationAlwaysAndWhenInUsePermission": "Your app uses your location to monitor movement for safety alerts even when the app is closed or not in use."
+          "locationAlwaysAndWhenInUsePermission": "Your app uses your location to monitor movement for safety alerts even when the app is closed or not in use.",
+          "isAndroidBackgroundLocationEnabled": true
         }
       ]
 

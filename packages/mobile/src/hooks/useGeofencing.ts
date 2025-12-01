@@ -1,7 +1,7 @@
 import * as Location from "expo-location";
 import { useState } from "react";
 import { Alert } from "react-native";
-import { GEOFENCE_TASK } from "@/lib/geofencingTask";
+import { GEOFENCE_TASK, GeofenceRecord } from "@/lib/geofencingTask";
 
 type Region = {
 	identifier: string;
@@ -14,6 +14,8 @@ type Region = {
 
 type IdleState = {
 	state: "idle";
+	regions: Region[];
+	history: GeofenceRecord[];
 };
 
 type LoadingState = {
@@ -28,7 +30,7 @@ type ErrorState = {
 type ActiveState = {
 	state: "active";
 	regions: Region[];
-	timeStamp: number;
+	history: GeofenceRecord[];
 };
 
 type StoppedState = {
@@ -45,6 +47,8 @@ export type GeofencingState =
 const useGeofencing = () => {
 	const [geofencingState, setGeofencingState] = useState<GeofencingState>({
 		state: "idle",
+		regions: [],
+		history: [],
 	});
 
 	const startGeofencing = async () => {

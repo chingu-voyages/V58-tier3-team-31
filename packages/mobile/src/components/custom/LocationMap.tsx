@@ -1,25 +1,26 @@
 import { useRef, useEffect, useState } from "react";
 import { Dimensions } from "react-native";
-import MapView, { Marker, type Region } from "react-native-maps";
+import MapView, { Marker, type Region, Circle } from "react-native-maps";
 import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import type * as Location from "expo-location";
 import { View } from "react-native";
+import type { GeofencingState } from "@/hooks/useGeofencing";
 
 type LocationMapProps = {
 	currentLocationCoords: Location.LocationObjectCoords;
+	geofencingState: GeofencingState;
 };
 
-const LocationMap = ({ currentLocationCoords }: LocationMapProps) => {
+const LocationMap = ({
+	currentLocationCoords,
+	geofencingState,
+}: LocationMapProps) => {
 	const mapRef = useRef<MapView>(null);
 	const [region, setRegion] = useState<Region | null>(null);
 	const [isAnimating] = useState(false);
 
 	const { width, height } = Dimensions.get("window");
-
-	console.log("map ref:", mapRef);
-	console.log("region:", region);
-	console.log("current location coords:", currentLocationCoords);
 
 	useEffect(() => {
 		if (currentLocationCoords && !isAnimating) {
@@ -48,6 +49,18 @@ const LocationMap = ({ currentLocationCoords }: LocationMapProps) => {
 				>
 					{currentLocationCoords && (
 						<Marker coordinate={currentLocationCoords} />
+					)}
+
+					{geofencingState.state === "active" && geofencingState.regions[0] && (
+						<Circle
+							center={{
+								latitude: geofencingState.regions[0]?.latitude,
+								longitude: geofencingState.regions[0]?.longitude,
+							}}
+							radius={geofencingState.regions[0]?.radius}
+							strokeColor="rgba(0, 150, 0, 0.8)"
+							fillColor="rgba(0, 150, 0, 0.2)"
+						/>
 					)}
 					<TouchableOpacity
 						className="absolute bottom-5 right-5"

@@ -6,17 +6,23 @@ import { Text } from "react-native-svg";
 
 const CurrentLocationMap = () => {
 	const { trackingState, startTracking } = useLocationTracker();
-	const { startGeofencing, stopGeofencing, geofencingState } = useGeofencing();
+	const { startGeofencing, geofencingState } = useGeofencing();
+
+	console.log("current location map geofencing state:", geofencingState);
 
 	useEffect(() => {
 		startTracking();
-	}, [startTracking]);
+		startGeofencing();
+	}, [startTracking, startGeofencing]);
 
 	if (trackingState.state !== "tracking") return <Text>Is loading...</Text>;
 
 	return (
 		trackingState.state === "tracking" && (
-			<LocationMap currentLocationCoords={trackingState.coords} />
+			<LocationMap
+				currentLocationCoords={trackingState.coords}
+				geofencingState={geofencingState}
+			/>
 		)
 	);
 };

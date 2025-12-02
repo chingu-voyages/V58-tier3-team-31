@@ -20,6 +20,8 @@ const LocationMap = ({
 	const [region, setRegion] = useState<Region | null>(null);
 	const [isAnimating] = useState(false);
 
+	console.log("location map geofencing state:", geofencingState);
+
 	const { width, height } = Dimensions.get("window");
 
 	useEffect(() => {

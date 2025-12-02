@@ -11,10 +11,11 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "infoPlist": { 
-        "UIBackgroundModes": [
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "SafeStep requires your location while the app is in use to track recoverer movements.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "SafeStep requires your location even in the background for safety tracking.",
+        "UIBackgroundModes": 
           ["location", "fetch", "remote-notification" ]
-        ]
       }
     },
     "android": {

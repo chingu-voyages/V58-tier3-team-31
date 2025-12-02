@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
 import type { LocationSubscription } from "expo-location";
+import { useCallback } from "react";
 
 type IdleState = {
 	state: "idle";
@@ -42,7 +43,7 @@ const useLocationTracker = () => {
 
 	const subscriptionRef = useRef<LocationSubscription>(null);
 
-	const startTracking = async () => {
+	const startTracking = useCallback(async () => {
 		setTrackingState({ state: "loading" });
 
 		try {
@@ -106,7 +107,7 @@ const useLocationTracker = () => {
 				error: errorMessage,
 			});
 		}
-	};
+	}, []);
 
 	const stopTracking = async () => {
 		if (subscriptionRef.current) {

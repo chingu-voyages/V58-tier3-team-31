@@ -31,12 +31,6 @@ const RecovererLayout = () => {
           ),
         }}
       />
-      <Tabs.Screen
-        name="sponsors/invite-sponsor"
-        options={{
-          href: null,
-        }}
-      />
     </Tabs>
   );
 };

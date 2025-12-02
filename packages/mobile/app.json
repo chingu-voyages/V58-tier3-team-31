@@ -30,6 +30,7 @@
       "permissions" : [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
         "FOREGROUND_SERVICE"
       ]
     },

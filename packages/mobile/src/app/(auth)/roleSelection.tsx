@@ -9,18 +9,45 @@ import { Alert } from "react-native";
 import { useState } from "react";
 import { signUpRecoverer, signUpSponsor } from "@/lib/auth";
 import { useRouter } from "expo-router";
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const RoleSelection = () => {
 	const router = useRouter();
 	const { session } = useSession();
 	const [isLoading, setIsLoading] = useState(false);
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+
+	useEffect(() => {
+		const loadNames = async () => {
+			const storedFirstName = await AsyncStorage.getItem("firstName");
+			const storedLastName = await AsyncStorage.getItem("lastName");
+			if (storedFirstName) setFirstName(storedFirstName);
+			if (storedLastName) setLastName(storedLastName);
+		};
+
+		loadNames();
+	}, []);
 
 	const handleSignUpSponsor = async () => {
 		if (!session?.user) return Alert.alert("User not found");
+		if (!firstName || !lastName)
+			return Alert.alert(
+				"There was an error with your signup. Please navigate bacck to the signup and try again.",
+			);
 		setIsLoading(true);
 		try {
-			const sponsorData = await signUpSponsor(session.user.id);
-			if (sponsorData?.id) router.navigate("/sponsor");
+			const sponsorData = await signUpSponsor(
+				session.user.id,
+				firstName,
+				lastName,
+			);
+
+			if (sponsorData?.id) {
+				await AsyncStorage.multiRemove(["firstName", "lastName"]);
+				router.replace("/sponsor");
+			}
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) Alert.alert(err.message);
@@ -31,10 +58,21 @@ const RoleSelection = () => {
 
 	const handleSignUpRecoverer = async () => {
 		if (!session?.user) return Alert.alert("User not found");
+		if (!firstName || !lastName)
+			return Alert.alert(
+				"There was an error with your signup. Please navigate bacck to the signup and try again.",
+			);
 		setIsLoading(true);
 		try {
-			const recovererData = await signUpRecoverer(session.user.id);
-			if (recovererData?.id) router.push("/(auth)/locationConsent");
+			const recovererData = await signUpRecoverer(
+				session.user.id,
+				firstName,
+				lastName,
+			);
+			if (recovererData?.id) {
+				await AsyncStorage.multiRemove(["firstName", "lastName"]);
+				router.replace("/(auth)/locationConsent");
+			}
 		} catch (err) {
 			console.error(err);
 			if (err instanceof Error) Alert.alert(err.message);
@@ -46,7 +84,7 @@ const RoleSelection = () => {
 	const buttonWidth = 150; // match the column width
 
 	return (
-		<VStack space="xl" className="flex-1 items-center justify-center">
+		<VStack space="xl" className="flex-1 items-center justify-center bg-white">
 			{/* Heading */}
 			<VStack space="sm" className="items-center">
 				<Heading className="font-bold text-primary-500 text-4xl">

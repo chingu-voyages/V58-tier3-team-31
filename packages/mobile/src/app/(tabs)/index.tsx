@@ -1,3 +1,4 @@
+import "@/lib/geofencingTask";
 import { useState } from "react";
 import { Alert } from "react-native";
 import { signInWithEmail, fetchUserRole } from "@/lib/auth";

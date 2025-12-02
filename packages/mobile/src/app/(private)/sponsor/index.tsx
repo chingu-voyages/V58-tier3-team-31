@@ -9,7 +9,7 @@ const SponsorDashboard = () => {
 
 	return (
 		<View>
-			<Text>Welcome, {sponsor?.id}</Text>
+			<Text>Welcome, {sponsor?.firstName}</Text>
 		</View>
 	);
 };

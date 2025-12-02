@@ -1,13 +1,12 @@
 import { Button, ButtonText, ButtonSpinner } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
-import { View, Alert } from "react-native";
+import { View } from "react-native";
 import useLocationTracker from "@/hooks/useLocationTracker";
 import useRecoverer from "@/hooks/useRecoverer";
-import { disableForegroundPermission } from "@/lib/location";
 import { useEffect } from "react";
 
 const RecovererDashboard = () => {
-	const { recoverer, isLoading, handleFetchRecoverer } = useRecoverer();
+	const { recoverer, isLoading } = useRecoverer();
 
 	const { startTracking, stopTracking, trackingState } = useLocationTracker();
 
@@ -17,6 +16,7 @@ const RecovererDashboard = () => {
 
 	return (
 		<View>
+			{recoverer && <Text>Welcome, {recoverer.firstName}</Text>}
 			{trackingState.state === "stopped" && (
 				<Button
 					onPress={startTracking}

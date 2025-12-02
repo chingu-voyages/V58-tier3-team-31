@@ -14,7 +14,16 @@ const fetchSponsor = async (userId: string) => {
 
 		if (error) return Alert.alert(error.message);
 
-		return data;
+		const sponsorData: Sponsor = {
+			id: data.id,
+			userId: data.user_id,
+			firstName: data.first_name,
+			lastName: data.last_name,
+			phone: data.phone,
+			notificationsEnabled: data.notifiacations_enabled,
+		};
+
+		return sponsorData;
 	} catch (err) {
 		console.error("There was a problem fetching the sponsor:", err);
 		if (err instanceof Error) return Alert.alert(err.message);

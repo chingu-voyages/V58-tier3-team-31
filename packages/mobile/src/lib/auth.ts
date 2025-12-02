@@ -19,10 +19,12 @@ export const signUpWithEmail = async (
 
 export const signUpRecoverer = async (
 	userId: string,
+	firstName: string,
+	lastName: string,
 ): Promise<Recoverer | undefined> => {
 	const { data, error } = await supabase
 		.from("recoverers")
-		.insert([{ user_id: userId, first_name: "Default", last_name: "Default" }])
+		.insert([{ user_id: userId, first_name: firstName, last_name: lastName }])
 		.select()
 		.single();
 
@@ -33,10 +35,12 @@ export const signUpRecoverer = async (
 
 export const signUpSponsor = async (
 	userId: string,
+	firstName: string,
+	lastName: string,
 ): Promise<Sponsor | undefined> => {
 	const { data, error } = await supabase
 		.from("sponsors")
-		.insert([{ user_id: userId, first_name: "John", last_name: "Doe" }])
+		.insert([{ user_id: userId, first_name: firstName, last_name: lastName }])
 		.select()
 		.single();
 

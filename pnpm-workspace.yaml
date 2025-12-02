@@ -3,4 +3,5 @@ packages:
 
 catalog:
   '@biomejs/biome': 2.3.4
+  react-native-maps: ^1.26.18
   typescript: ^5.9.3

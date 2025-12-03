@@ -4,19 +4,19 @@ import { useEffect } from "react";
 import { Text } from "react-native-svg";
 
 const CurrentLocationMap = () => {
-	const { trackingState, startTracking } = useLocationTracker();
+  const { trackingState, startTracking } = useLocationTracker();
 
-	useEffect(() => {
-		startTracking();
-	}, [startTracking]);
+  useEffect(() => {
+    startTracking();
+  }, [startTracking]);
 
-	if (trackingState.state !== "tracking") return <Text>Is loading...</Text>;
+  if (trackingState.state !== "tracking") return <Text>Is loading...</Text>;
 
-	return (
-		trackingState.state === "tracking" && (
-			<LocationMap currentLocationCoords={trackingState.coords} />
-		)
-	);
+  return (
+    trackingState.state === "tracking" && (
+      <LocationMap currentLocationCoords={trackingState.coords} />
+    )
+  );
 };
 
 export default CurrentLocationMap;

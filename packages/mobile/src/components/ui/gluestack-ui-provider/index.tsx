@@ -8,35 +8,35 @@ import { useColorScheme } from "nativewind";
 export type ModeType = "light" | "dark" | "system";
 
 export function GluestackUIProvider({
-	mode = "light",
-	...props
+  mode = "light",
+  ...props
 }: {
-	mode?: ModeType;
-	children?: React.ReactNode;
-	style?: ViewProps["style"];
+  mode?: ModeType;
+  children?: React.ReactNode;
+  style?: ViewProps["style"];
 }) {
-	const { colorScheme, setColorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useColorScheme();
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <>
-	useEffect(() => {
-		setColorScheme(mode);
-	}, [mode]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <>
+  useEffect(() => {
+    setColorScheme(mode);
+  }, [mode]);
 
-	if (!colorScheme) {
-		return null;
-	}
+  if (!colorScheme) {
+    return null;
+  }
 
-	return (
-		<View
-			style={[
-				config[colorScheme],
-				{ flex: 1, height: "100%", width: "100%" },
-				props.style,
-			]}
-		>
-			<OverlayProvider>
-				<ToastProvider>{props.children}</ToastProvider>
-			</OverlayProvider>
-		</View>
-	);
+  return (
+    <View
+      style={[
+        config[colorScheme],
+        { flex: 1, height: "100%", width: "100%" },
+        props.style,
+      ]}
+    >
+      <OverlayProvider>
+        <ToastProvider>{props.children}</ToastProvider>
+      </OverlayProvider>
+    </View>
+  );
 }

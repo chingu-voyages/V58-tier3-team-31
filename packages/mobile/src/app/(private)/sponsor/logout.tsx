@@ -4,20 +4,20 @@ import { useRouter } from "expo-router";
 import { View, ActivityIndicator } from "react-native";
 
 export default function LogoutScreen() {
-	const router = useRouter();
+  const router = useRouter();
 
-	useEffect(() => {
-		const logout = async () => {
-			await supabase.auth.signOut();
-			router.replace("/(tabs)");
-		};
+  useEffect(() => {
+    const logout = async () => {
+      await supabase.auth.signOut();
+      router.replace("/");
+    };
 
-		logout();
-	}, [router]);
+    logout();
+  }, [router]);
 
-	return (
-		<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-			<ActivityIndicator size="large" />
-		</View>
-	);
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <ActivityIndicator size="large" />
+    </View>
+  );
 }

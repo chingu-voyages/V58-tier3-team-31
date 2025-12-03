@@ -45,6 +45,8 @@
 		"packages/*"
 	],
 	"dependencies": {
-		"@gluestack-ui/textarea": "^0.1.25"
+		"@gluestack-ui/textarea": "^0.1.25",
+		"@expo/html-elements": "^0.12.5",
+		"@legendapp/motion": "^2.5.3"
 	}
 }

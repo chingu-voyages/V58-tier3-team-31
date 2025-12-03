@@ -42,5 +42,9 @@
 	},
 	"workspaces": [
 		"packages/*"
-	]
+	],
+	"dependencies": {
+		"@expo/html-elements": "^0.12.5",
+		"@legendapp/motion": "^2.5.3"
+	}
 }

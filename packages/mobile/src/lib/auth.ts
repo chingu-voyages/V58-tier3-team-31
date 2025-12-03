@@ -1,7 +1,5 @@
 import { supabase } from "@/lib/supabase";
 import type { Session } from "@supabase/supabase-js";
-import type { Recoverer, Sponsor, UserRole } from "@/types/users";
-import type { User } from "@supabase/supabase-js";
 
 export const signUpWithEmail = async (
   email: string,
@@ -17,9 +15,7 @@ export const signUpWithEmail = async (
   return session;
 };
 
-export const signUpRecoverer = async (
-  userId: string,
-): Promise<Recoverer | undefined> => {
+export const signUpRecoverer = async (userId: string) => {
   const { data, error } = await supabase
     .from("recoverers")
     .insert([{ user_id: userId, first_name: "Default", last_name: "Default" }])
@@ -31,12 +27,22 @@ export const signUpRecoverer = async (
   if (data) return data;
 };
 
-export const signUpSponsor = async (
-  userId: string,
-): Promise<Sponsor | undefined> => {
+export const signUpSponsor = async ({
+  userId,
+  firstName,
+  lastName,
+  email,
+}: {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}) => {
   const { data, error } = await supabase
     .from("sponsors")
-    .insert([{ user_id: userId, first_name: "John", last_name: "Doe" }])
+    .insert([
+      { user_id: userId, first_name: firstName, last_name: lastName, email },
+    ])
     .select()
     .single();
 
@@ -55,10 +61,7 @@ export const fetchRecoverer = async (userId: string) => {
   return data;
 };
 
-export const signInWithEmail = async (
-  email: string,
-  password: string,
-): Promise<User> => {
+export const signInWithEmail = async (email: string, password: string) => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -70,9 +73,7 @@ export const signInWithEmail = async (
   return data.user;
 };
 
-export const fetchUserRole = async (
-  userId: string,
-): Promise<UserRole | null> => {
+export const fetchUserRole = async (userId: string) => {
   const { data: recovererData, error: recovererError } = await supabase
     .from("recoverers")
     .select("*")

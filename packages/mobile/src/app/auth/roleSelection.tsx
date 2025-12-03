@@ -8,19 +8,32 @@ import useSession from "@/hooks/useSession";
 import { Alert } from "react-native";
 import { useState } from "react";
 import { signUpRecoverer, signUpSponsor } from "@/lib/auth";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 
 const RoleSelection = () => {
   const router = useRouter();
   const { session } = useSession();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<false | "recoverer" | "sponsor">(
+    false,
+  );
+
+  const { email, firstName, lastName } = useLocalSearchParams<{
+    email: string;
+    firstName: string;
+    lastName: string;
+  }>();
 
   const handleSignUpSponsor = async () => {
     if (!session?.user) return Alert.alert("User not found");
-    setIsLoading(true);
+    setIsLoading("sponsor");
     try {
-      const sponsorData = await signUpSponsor(session.user.id);
-      if (sponsorData?.id) router.navigate("/sponsor");
+      const sponsorData = await signUpSponsor({
+        userId: session.user.id,
+        firstName: firstName || "John",
+        lastName: lastName || "Doe",
+        email: email || "",
+      });
+      if (sponsorData?.id) router.push("/sponsor");
     } catch (err) {
       console.error(err);
       if (err instanceof Error) Alert.alert(err.message);
@@ -31,7 +44,7 @@ const RoleSelection = () => {
 
   const handleSignUpRecoverer = async () => {
     if (!session?.user) return Alert.alert("User not found");
-    setIsLoading(true);
+    setIsLoading("recoverer");
     try {
       const recovererData = await signUpRecoverer(session.user.id);
       if (recovererData?.id) router.push("/auth/locationConsent");
@@ -94,11 +107,11 @@ const RoleSelection = () => {
       <HStack space="xl" className="mt-4">
         <Button onPress={handleSignUpRecoverer} style={{ width: buttonWidth }}>
           <ButtonText>Recoverer</ButtonText>
-          {isLoading && <ButtonSpinner color="white" />}
+          {isLoading === "recoverer" && <ButtonSpinner color="white" />}
         </Button>
         <Button onPress={handleSignUpSponsor} style={{ width: buttonWidth }}>
           <ButtonText>Sponsor</ButtonText>
-          {isLoading && <ButtonSpinner color="white" />}
+          {isLoading === "sponsor" && <ButtonSpinner color="white" />}
         </Button>
       </HStack>
     </VStack>

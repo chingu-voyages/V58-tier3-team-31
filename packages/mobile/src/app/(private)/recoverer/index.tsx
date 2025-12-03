@@ -1,4 +1,4 @@
-import { Button, ButtonText, ButtonSpinner } from "@/components/ui/button";
+import { Button, ButtonText } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { View } from "react-native";
 import useLocationTracker from "@/hooks/useLocationTracker";

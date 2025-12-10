@@ -24,7 +24,22 @@ const PrivateLayout = () => {
           userRole?.role === "recoverer" ? "recoverer" : "sponsor"
         }
       >
-        <Stack.Screen name="sponsor" />
+        <Stack.Screen
+          name="sponsor"
+          options={{
+            title: "",
+            headerLeft: () => null,
+            headerRight: () => (
+              <FontAwesome
+                name="cog"
+                size={24}
+                color="grey"
+                style={{ marginRight: 16 }}
+                onPress={() => router.push("/sponsorSettings")}
+              />
+            ),
+          }}
+        />
         <Stack.Screen
           name="recoverer"
           options={{
@@ -40,6 +55,10 @@ const PrivateLayout = () => {
               />
             ),
           }}
+        />
+        <Stack.Screen
+          name="sponsorSettings"
+          options={{ title: "", headerShown: false }}
         />
         <Stack.Screen
           name="recovererSettings"

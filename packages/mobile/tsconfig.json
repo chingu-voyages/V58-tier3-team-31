@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strict": true,
+    "resolvePlatformSpecificFiles": true,
     // "useUnknownInCatchVariables": false,
     "isolatedModules": true, // Good to enforce monorepo safety
     "noUncheckedIndexedAccess": true, // Stricter array access

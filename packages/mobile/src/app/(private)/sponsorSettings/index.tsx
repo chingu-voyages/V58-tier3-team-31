@@ -14,7 +14,7 @@ const sponsorSettings = () => {
         <Heading className="text-2xl text-primary-500">Account Details</Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className=" p-2 bg-[#FFEAE1]">
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
               <FontAwesome name="user" size={33} color="#2A5E69" />
             </View>
             <Text>View/Edit Profile</Text>
@@ -31,7 +31,7 @@ const sponsorSettings = () => {
         </Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className="p-2 bg-[#FFEAE1]">
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
               <FontAwesome name="users" size={30} color="#2A5E69" />
             </View>
             <Text>Manage Recoverer Connection</Text>
@@ -48,7 +48,7 @@ const sponsorSettings = () => {
         </Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className="p-2 bg-[#FFEAE1]">
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
               <FontAwesome name="bell" size={30} color="#2A5E69" />
             </View>
             <Text>Notification Settings</Text>

@@ -31,7 +31,7 @@ const recovererSettings = () => {
         <Heading className="text-2xl text-primary-500">Account Details</Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className=" p-2 bg-[#FFEAE1]">
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
               <FontAwesome name="user" size={30} color="#2A5E69" />
             </View>
             <Text>View/Edit Profile</Text>
@@ -48,8 +48,8 @@ const recovererSettings = () => {
         </Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className="p-2 bg-[#FFEAE1]">
-              <FontAwesome name="user" size={30} color="#2A5E69" />
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
+              <FontAwesome name="map-marker" size={30} color="#2A5E69" />
             </View>
             <Text>Enable Location Tracking</Text>
           </View>
@@ -63,8 +63,8 @@ const recovererSettings = () => {
         </Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className="p-2 bg-[#FFEAE1]">
-              <FontAwesome name="user" size={30} color="#2A5E69" />
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
+              <FontAwesome name="bell" size={30} color="#2A5E69" />
             </View>
             <Text>Notification Settings</Text>
           </View>
@@ -78,8 +78,8 @@ const recovererSettings = () => {
         <Heading className="text-2xl text-primary-500">Privacy</Heading>
         <HStack className="items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <View className="p-2 bg-[#FFEAE1]">
-              <FontAwesome name="user" size={30} color="#2A5E69" />
+            <View className="w-11 h-11 bg-[#FFEAE1] justify-center items-center">
+              <FontAwesome name="unlock-alt" size={30} color="#2A5E69" />
             </View>
             <Text>Privacy Information</Text>
           </View>

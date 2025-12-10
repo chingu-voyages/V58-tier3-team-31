@@ -7,82 +7,89 @@ import { Text } from "@/components/ui/text";
 import { Icon, ChevronRightIcon } from "@/components/ui/icon";
 import { useState } from "react";
 import useLocationTracker from "@/hooks/useLocationTracker";
+import { Link } from "expo-router";
 
 const recovererSettings = () => {
-	const { startTracking, stopTracking, trackingState } = useLocationTracker();
-	const [isEnabled, setIsEnabled] = useState(false);
+  const { startTracking, stopTracking, trackingState } = useLocationTracker();
+  const [isEnabled, setIsEnabled] = useState(false);
 
-	const toggleSwitch = () => {
-		setIsEnabled((prev) => {
-			const newState = !prev;
+  const toggleSwitch = () => {
+    setIsEnabled((prev) => {
+      const newState = !prev;
 
-			if (newState) startTracking();
-			else stopTracking();
+      if (newState) startTracking();
+      else stopTracking();
 
-			return newState;
-		});
-	};
+      return newState;
+    });
+  };
 
-	return (
-		<VStack className="flex-1 bg-white p-10 justify-center" space="4xl">
-			{trackingState.state === "tracking" && <Text>Tracking</Text>}
-			<VStack space="md" className="justify-start">
-				<Heading className="text-2xl text-primary-500">Account Details</Heading>
-				<HStack className="items-center justify-between">
-					<View className="flex flex-row items-center gap-3">
-						<View className=" p-2 bg-[#FFEAE1]">
-							<FontAwesome name="user" size={30} color="#2A5E69" />
-						</View>
-						<Text>View/Edit Profile</Text>
-					</View>
-					<Icon as={ChevronRightIcon} />
-				</HStack>
-			</VStack>
+  return (
+    <VStack className="flex-1 bg-white p-10 justify-center" space="4xl">
+      {trackingState.state === "tracking" && <Text>Tracking</Text>}
+      <VStack space="md" className="justify-start">
+        <Heading className="text-2xl text-primary-500">Account Details</Heading>
+        <HStack className="items-center justify-between">
+          <View className="flex flex-row items-center gap-3">
+            <View className=" p-2 bg-[#FFEAE1]">
+              <FontAwesome name="user" size={30} color="#2A5E69" />
+            </View>
+            <Text>View/Edit Profile</Text>
+          </View>
+          <Link href="./recovererSettings/placeholder">
+            <Icon as={ChevronRightIcon} />
+          </Link>
+        </HStack>
+      </VStack>
 
-			<VStack space="md">
-				<Heading className="text-2xl text-primary-500">
-					Location Tracking
-				</Heading>
-				<HStack className="items-center justify-between">
-					<View className="flex flex-row items-center gap-3">
-						<View className="p-2 bg-[#FFEAE1]">
-							<FontAwesome name="user" size={30} color="#2A5E69" />
-						</View>
-						<Text>Enable Location Tracking</Text>
-					</View>
-					<Switch value={isEnabled} onValueChange={toggleSwitch} />
-				</HStack>
-			</VStack>
+      <VStack space="md">
+        <Heading className="text-2xl text-primary-500">
+          Location Tracking
+        </Heading>
+        <HStack className="items-center justify-between">
+          <View className="flex flex-row items-center gap-3">
+            <View className="p-2 bg-[#FFEAE1]">
+              <FontAwesome name="user" size={30} color="#2A5E69" />
+            </View>
+            <Text>Enable Location Tracking</Text>
+          </View>
+          <Switch value={isEnabled} onValueChange={toggleSwitch} />
+        </HStack>
+      </VStack>
 
-			<VStack space="md">
-				<Heading className="text-2xl text-primary-500">
-					Notification Preferences
-				</Heading>
-				<HStack className="items-center justify-between">
-					<View className="flex flex-row items-center gap-3">
-						<View className="p-2 bg-[#FFEAE1]">
-							<FontAwesome name="user" size={30} color="#2A5E69" />
-						</View>
-						<Text>Notification Settings</Text>
-					</View>
-					<Icon as={ChevronRightIcon} />
-				</HStack>
-			</VStack>
+      <VStack space="md">
+        <Heading className="text-2xl text-primary-500">
+          Notification Preferences
+        </Heading>
+        <HStack className="items-center justify-between">
+          <View className="flex flex-row items-center gap-3">
+            <View className="p-2 bg-[#FFEAE1]">
+              <FontAwesome name="user" size={30} color="#2A5E69" />
+            </View>
+            <Text>Notification Settings</Text>
+          </View>
+          <Link href="./recovererSettings/placeholder">
+            <Icon as={ChevronRightIcon} />
+          </Link>
+        </HStack>
+      </VStack>
 
-			<VStack space="md">
-				<Heading className="text-2xl text-primary-500">Privacy</Heading>
-				<HStack className="items-center justify-between">
-					<View className="flex flex-row items-center gap-3">
-						<View className="p-2 bg-[#FFEAE1]">
-							<FontAwesome name="user" size={30} color="#2A5E69" />
-						</View>
-						<Text>Privacy Information</Text>
-					</View>
-					<Icon as={ChevronRightIcon} />
-				</HStack>
-			</VStack>
-		</VStack>
-	);
+      <VStack space="md">
+        <Heading className="text-2xl text-primary-500">Privacy</Heading>
+        <HStack className="items-center justify-between">
+          <View className="flex flex-row items-center gap-3">
+            <View className="p-2 bg-[#FFEAE1]">
+              <FontAwesome name="user" size={30} color="#2A5E69" />
+            </View>
+            <Text>Privacy Information</Text>
+          </View>
+          <Link href="./recovererSettings/placeholder">
+            <Icon as={ChevronRightIcon} />
+          </Link>
+        </HStack>
+      </VStack>
+    </VStack>
+  );
 };
 
 export default recovererSettings;

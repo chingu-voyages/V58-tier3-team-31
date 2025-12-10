@@ -14,18 +14,15 @@ importers:
 
   .:
     dependencies:
-<<<<<<< HEAD
-      '@gluestack-ui/textarea':
-        specifier: ^0.1.25
-        version: 0.1.25(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
-=======
       '@expo/html-elements':
         specifier: ^0.12.5
         version: 0.12.5
+      '@gluestack-ui/textarea':
+        specifier: ^0.1.25
+        version: 0.1.25(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       '@legendapp/motion':
         specifier: ^2.5.3
         version: 2.5.3(nativewind@4.2.1(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1)))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
->>>>>>> main
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.3.5
@@ -53,7 +50,7 @@ importers:
         version: 2.0.4
       supabase:
         specifier: ^2.63.1
-        version: 2.63.1
+        version: 2.65.8
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -150,6 +147,9 @@ importers:
       expo-web-browser:
         specifier: ~15.0.9
         version: 15.0.9(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))
+      lucide-react-native:
+        specifier: ^0.510.0
+        version: 0.510.0(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       nativewind:
         specifier: ^4.2.1
         version: 4.2.1(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1))
@@ -171,6 +171,9 @@ importers:
       react-native-gesture-handler:
         specifier: ~2.28.0
         version: 2.28.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      react-native-maps:
+        specifier: ^1.20.1
+        version: 1.20.1(react-native-web@0.21.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       react-native-reanimated:
         specifier: ~4.1.5
         version: 4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
@@ -205,6 +208,9 @@ importers:
       '@clack/core':
         specifier: ^0.5.0
         version: 0.5.0
+      '@types/react-native-maps':
+        specifier: ^0.24.2
+        version: 0.24.2(react-native-web@0.21.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       gluestack-ui:
         specifier: ^3.0.11
         version: 3.0.11(react-dom@19.1.0(react@19.1.0))(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1))
@@ -2165,6 +2171,9 @@ packages:
   '@types/conventional-commits-parser@5.0.2':
     resolution: {integrity: sha512-BgT2szDXnVypgpNxOK8aL5SGjUdaQbC++WZNjF1Qge3Og2+zhHj+RWhmehLhYyvQwqAmvezruVfOf8+3m74W+g==}
 
+  '@types/geojson@7946.0.16':
+    resolution: {integrity: sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg==}
+
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
 
@@ -2185,6 +2194,10 @@ packages:
 
   '@types/phoenix@1.6.6':
     resolution: {integrity: sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==}
+
+  '@types/react-native-maps@0.24.2':
+    resolution: {integrity: sha512-4nunEtRw4DoER/oagEofZkwdOVmHV2p3FvMrs6aVjVV+WlXnQWs5fIosqdeWI3OJI5SLsAL+6/HRZxGuQ0ts0Q==}
+    deprecated: This is a stub types definition. react-native-maps provides its own type definitions, so you do not need this installed.
 
   '@types/react-native-vector-icons@6.4.18':
     resolution: {integrity: sha512-YGlNWb+k5laTBHd7+uZowB9DpIK3SXUneZqAiKQaj1jnJCZM0x71GDim5JCTMi4IFkhc9m8H/Gm28T5BjyivUw==}
@@ -3161,8 +3174,8 @@ packages:
   flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
 
-  flow-parser@0.291.0:
-    resolution: {integrity: sha512-MLqjFn72Dvndqrkjy280HaIs4AV9Z6nxVRmNPO3TjbYcipg4hR7QX7tEYZYsVvaaZWZPGe6Mithluk2aPGlDOw==}
+  flow-parser@0.293.0:
+    resolution: {integrity: sha512-8tEGAcWpCqioajiSqrJr2+JSmkEI2vO/UACFGG378RO106ez9xugVxe9EpXD3aI1Vbf+mEUGhMt0gMpveJwVGA==}
     engines: {node: '>=0.4.0'}
 
   fontfaceobserver@2.3.0:
@@ -3845,6 +3858,13 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
+  lucide-react-native@0.510.0:
+    resolution: {integrity: sha512-Ggy6NyWNcb/Wp9I0Kguwab5FRjr3GYsxNi0Nmy+skur1yj9TKiF2vcXPL7zWkkcgqk8WWKiIvmN3CntWvaDR1w==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+      react-native-svg: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
+
   make-dir@2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
@@ -4371,8 +4391,8 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4494,6 +4514,17 @@ packages:
     peerDependencies:
       react: '*'
       react-native: '*'
+
+  react-native-maps@1.20.1:
+    resolution: {integrity: sha512-NZI3B5Z6kxAb8gzb2Wxzu/+P2SlFIg1waHGIpQmazDSCRkNoHNY4g96g+xS0QPSaG/9xRBbDNnd2f2/OW6t6LQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: '>= 17.0.1'
+      react-native: '>= 0.64.3'
+      react-native-web: '>= 0.11'
+    peerDependenciesMeta:
+      react-native-web:
+        optional: true
 
   react-native-ratings@8.1.0:
     resolution: {integrity: sha512-+QOJ4G3NjVkI1D+tk4EGx1dCvVfbD2nQdkrj9cXrcAoEiwmbep4z4bZbCKmWMpQ5h2dqbxABU8/eBnbDmvAc3g==}
@@ -4931,8 +4962,8 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
-  supabase@2.63.1:
-    resolution: {integrity: sha512-VptpJrw8sSG8xE6Pda/jg5Vg2f3jt15nJZ0crPvRKGpYkMJi7EjPapbOonRxIH5JvTd98x+lshsLnKR2mkoTRA==}
+  supabase@2.65.8:
+    resolution: {integrity: sha512-ZEk9Mq1iambcg+GX1JT258eR2LpoNF2a6a6h1VZEPFNNSB54Yg7Z9bd8WlUM/XtB8p8sE37+AfzVXShNzcMIYg==}
     engines: {npm: '>=8'}
     hasBin: true
 
@@ -6652,7 +6683,6 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-<<<<<<< HEAD
   '@kwsites/file-exists@1.1.1':
     dependencies:
       debug: 4.4.3
@@ -6661,10 +6691,7 @@ snapshots:
 
   '@kwsites/promise-deferred@1.1.1': {}
 
-  '@legendapp/motion@2.5.3(nativewind@4.2.1(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1)))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)':
-=======
   '@legendapp/motion@2.5.3(nativewind@4.2.1(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1)))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)':
->>>>>>> main
     dependencies:
       '@legendapp/tools': 2.0.1(react@19.1.0)
       nativewind: 4.2.1(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1))
@@ -8192,6 +8219,8 @@ snapshots:
     dependencies:
       '@types/node': 24.10.1
 
+  '@types/geojson@7946.0.16': {}
+
   '@types/graceful-fs@4.1.9':
     dependencies:
       '@types/node': 24.10.1
@@ -8213,6 +8242,14 @@ snapshots:
       undici-types: 7.16.0
 
   '@types/phoenix@1.6.6': {}
+
+  '@types/react-native-maps@0.24.2(react-native-web@0.21.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      react-native-maps: 1.20.1(react-native-web@0.21.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+    transitivePeerDependencies:
+      - react
+      - react-native
+      - react-native-web
 
   '@types/react-native-vector-icons@6.4.18':
     dependencies:
@@ -9284,7 +9321,7 @@ snapshots:
 
   flow-enums-runtime@0.0.6: {}
 
-  flow-parser@0.291.0: {}
+  flow-parser@0.293.0: {}
 
   fontfaceobserver@2.3.0: {}
 
@@ -9402,7 +9439,7 @@ snapshots:
       fs-extra: 11.3.2
       jscodeshift: 17.3.0
       nativewind: 4.2.1(react-native-reanimated@4.1.5(@babel/core@7.28.5)(react-native-worklets@0.5.1(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.18(yaml@2.8.1))
-      prettier: 3.6.2
+      prettier: 3.7.4
       react-aria: 3.44.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-native-svg: 15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       recast: 0.23.11
@@ -9707,7 +9744,7 @@ snapshots:
       '@babel/preset-flow': 7.27.1(@babel/core@7.28.5)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.5)
       '@babel/register': 7.28.3(@babel/core@7.28.5)
-      flow-parser: 0.291.0
+      flow-parser: 0.293.0
       graceful-fs: 4.2.11
       micromatch: 4.0.8
       neo-async: 2.6.2
@@ -9953,6 +9990,12 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-react-native@0.510.0(react-native-svg@15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0)
+      react-native-svg: 15.12.1(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
 
   make-dir@2.1.0:
     dependencies:
@@ -10651,7 +10694,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier@3.6.2: {}
+  prettier@3.7.4: {}
 
   pretty-bytes@5.6.0: {}
 
@@ -10814,6 +10857,14 @@ snapshots:
     dependencies:
       react: 19.1.0
       react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0)
+
+  react-native-maps@1.20.1(react-native-web@0.21.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@types/geojson': 7946.0.16
+      react: 19.1.0
+      react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0)
+    optionalDependencies:
+      react-native-web: 0.21.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   react-native-ratings@8.1.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0):
     dependencies:
@@ -11317,7 +11368,7 @@ snapshots:
       pirates: 4.0.7
       ts-interface-checker: 0.1.13
 
-  supabase@2.63.1:
+  supabase@2.65.8:
     dependencies:
       bin-links: 6.0.0
       https-proxy-agent: 7.0.6

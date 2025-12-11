@@ -6,7 +6,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 const RecovererLayout = () => {
 	return (
 		<GluestackUIProvider mode="dark">
-			<Tabs>
+			<Tabs detachInactiveScreens={false}>
 				<Tabs.Screen
 					name="index"
 					options={{

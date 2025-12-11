@@ -92,7 +92,7 @@ const useGeofencing = () => {
 					identifier: "PT-Home-Test",
 					latitude: 41.48595203395239,
 					longitude: -71.42164970467098,
-					radius: 150,
+					radius: 100,
 					notifyOnEnter: true,
 					notifyOnExit: true,
 				},

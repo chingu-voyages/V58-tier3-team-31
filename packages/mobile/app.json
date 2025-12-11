@@ -43,7 +43,13 @@
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.FOREGROUND_SERVICE_LOCATION"
       ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDRpSCikLw2Bw8ugciuHS_aAZwR6F2Q9jE"
+        }
+      },
       "package": "com.tascapeter514.safestep"
+      
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png",

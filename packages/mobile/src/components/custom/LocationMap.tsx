@@ -64,7 +64,7 @@ const LocationMap = ({
 							fillColor="rgba(0, 150, 0, 0.2)"
 						/>
 					)}
-					<TouchableOpacity
+					{/* <TouchableOpacity
 						className="absolute bottom-5 right-5"
 						onPress={() => {
 							if (currentLocationCoords && region) {
@@ -73,7 +73,7 @@ const LocationMap = ({
 						}}
 					>
 						<MaterialIcons name="my-location" size={32} color="green" />
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 				</MapView>
 			)}
 		</View>

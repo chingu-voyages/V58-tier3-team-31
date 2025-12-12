@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
 import type { LocationSubscription } from "expo-location";
@@ -116,6 +116,17 @@ const useLocationTracker = () => {
     }
     setTrackingState({ state: "stopped" });
   };
+
+  useEffect(() => {
+    startTracking();
+
+    return () => {
+      if (subscriptionRef.current) {
+        subscriptionRef.current.remove();
+        subscriptionRef.current = null;
+      }
+    };
+  }, [startTracking]);
 
   return {
     trackingState,

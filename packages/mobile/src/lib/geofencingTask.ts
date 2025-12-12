@@ -2,6 +2,7 @@ import * as TaskManager from "expo-task-manager";
 import { GeofencingEventType } from "expo-location";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { Region } from "react-native-maps";
+import { sendExitAlert, sendEnterAlert } from "./notifications";
 
 export const GEOFENCE_TASK = "geofence-task";
 export interface GeofenceRecord {
@@ -41,10 +42,12 @@ TaskManager.defineTask(GEOFENCE_TASK, async ({ data, error }) => {
 
   if (eventType === GeofencingEventType.Enter) {
     console.log("🟢 Entered geofence region:", region);
+    await sendEnterAlert(region.identifier);
   }
 
   if (eventType === GeofencingEventType.Exit) {
     console.log("🔴 Exited geofence region:", region.identifier);
+    await sendExitAlert(region.identifier);
   }
 
   return;

@@ -4,13 +4,24 @@ import { View } from "react-native";
 import useLocationTracker from "@/hooks/useLocationTracker";
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { checkAndRequestPermission } from "@/lib/notifications";
+import { Alert } from "react-native";
 
 const RecovererDashboard = () => {
   const { startTracking, stopTracking, trackingState } = useLocationTracker();
 
   useEffect(() => {
-    startTracking();
-  }, [startTracking]);
+    const checkPermissions = async () => {
+      const granted = await checkAndRequestPermission();
+
+      if (!granted) {
+        console.warn("Notifications Permission was denied.");
+        Alert.alert("Error", "Please enable notifications on your device");
+      }
+    };
+
+    checkPermissions();
+  }, []);
 
   return (
     <SafeAreaView className="bg-white flex-1">

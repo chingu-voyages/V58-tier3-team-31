@@ -90,9 +90,9 @@ const useGeofencing = () => {
       const regions: Region[] = [
         {
           identifier: "PT-Home-Test",
-          latitude: 41.48595203395239,
+          latitude: 41.4859520339523,
           longitude: -71.42164970467098,
-          radius: 100,
+          radius: 50,
           notifyOnEnter: true,
           notifyOnExit: true,
         },

@@ -21,6 +21,7 @@ const LocationMap = ({
   const [isAnimating] = useState(false);
 
   console.log("location map geofencing state:", geofencingState);
+  //   console.log("location map geofencing state:", geofencingState.regions[0]);
 
   const { width, height } = Dimensions.get("window");
 

@@ -27,7 +27,7 @@ export const checkAndRequestPermission = async () => {
 
 export const sendEnterAlert = async (regionIdentifier: string) => {
   const title = "🚨 Safety Alert: Alcohol Risk Zone Entered";
-  const body = `You have entered the ${regionIdentifier} unsafe zone.`;
+  const body = `You have entered an unsafe zone and your sponsor will be alerted.`;
 
   await Notifications.scheduleNotificationAsync({
     content: {
@@ -52,7 +52,7 @@ export const sendEnterAlert = async (regionIdentifier: string) => {
 
 export const sendExitAlert = async (regionIdentifier: string) => {
   const title = "✅ Risky Zone Exited";
-  const body = `You have left the ${regionIdentifier} unsafe zone.`;
+  const body = `You have left the unsafe zone and your sponsor has been alerted.`;
 
   await Notifications.scheduleNotificationAsync({
     content: {

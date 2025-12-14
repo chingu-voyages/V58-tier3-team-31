@@ -1,57 +1,55 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { Dimensions } from "react-native";
-import MapView, { Marker, type Region } from "react-native-maps";
-import { TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import MapView, { type Region, Circle } from "react-native-maps";
+import LocationMarker from "../LocationMarker";
+import { useMemo } from "react";
 import { View } from "react-native";
-import useLocationTracker from "@/hooks/useLocationTracker";
+import type { GeofencingState } from "@/hooks/useGeofencing";
 
-const LocationMap = () => {
+type LocationMapProps = {
+  // currentLocationCoords: Location.LocationObjectCoords;
+  geofencingState: GeofencingState;
+};
+
+const LocationMap = ({ geofencingState }: LocationMapProps) => {
   const mapRef = useRef<MapView>(null);
-  const [region, setRegion] = useState<Region | null>(null);
 
   const { width, height } = Dimensions.get("window");
 
-  const { trackingState, startTracking } = useLocationTracker();
+  const HARDCODED_LATITUDE = 41.48595203395239;
+  const HARDCODED_LONGITUDE = -71.42164970467098;
 
-  useEffect(() => {
-    startTracking();
-  }, [startTracking]);
-
-  useEffect(() => {
-    if (trackingState.state === "tracking") {
-      const { latitude, longitude } = trackingState.coords;
-      const newRegion: Region = {
-        latitude,
-        longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
-      };
-      setRegion(newRegion);
-    }
-  }, [trackingState]);
+  const initialRegion = useMemo<Region>(
+    () => ({
+      latitude: HARDCODED_LATITUDE,
+      longitude: HARDCODED_LONGITUDE,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    }),
+    [],
+  );
 
   return (
     <View className="border border-black flex-1 flex flex-col justify-center items-center">
-      {region && (
-        <MapView
-          ref={mapRef}
-          region={region}
-          style={{ height: height, width: width, borderRadius: 12 }}
-        >
-          {region.latitude && <Marker coordinate={region} />}
-        </MapView>
-      )}
-      <TouchableOpacity
-        className="absolute bottom-5 right-5"
-        onPress={() => {
-          if (region) {
-            mapRef.current?.animateToRegion(region);
-          }
-        }}
+      <MapView
+        ref={mapRef}
+        initialRegion={initialRegion}
+        style={{ height: height, width: width, borderRadius: 12 }}
       >
-        <MaterialIcons name="my-location" size={32} color="orange" />
-      </TouchableOpacity>
+        <LocationMarker />
+
+        {geofencingState.state === "active" && geofencingState.regions[0] && (
+          <Circle
+            center={{
+              latitude: geofencingState.regions[0]?.latitude,
+              longitude: geofencingState.regions[0]?.longitude,
+            }}
+            radius={geofencingState.regions[0]?.radius}
+            strokeColor="rgba(0, 150, 0, 0.8)"
+            fillColor="rgba(0, 150, 0, 0.2)"
+          />
+        )}
+      </MapView>
     </View>
   );
 };

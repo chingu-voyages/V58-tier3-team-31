@@ -10,7 +10,7 @@ import useLocationTracker from "@/hooks/useLocationTracker";
 import { Link } from "expo-router";
 
 const recovererSettings = () => {
-  const { startTracking, stopTracking, trackingState } = useLocationTracker();
+  const { startTracking, stopTracking } = useLocationTracker();
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
@@ -26,7 +26,6 @@ const recovererSettings = () => {
 
   return (
     <VStack className="flex-1 bg-white p-10 justify-center" space="4xl">
-      {trackingState.state === "tracking" && <Text>Tracking</Text>}
       <VStack space="md" className="justify-start">
         <Heading className="text-2xl text-primary-500">Account Details</Heading>
         <HStack className="items-center justify-between">

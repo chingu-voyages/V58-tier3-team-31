@@ -10,11 +10,17 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "bundleIdentifier": "com.tascapeter514.safestep",
       "supportsTablet": true,
-      "infoPlist": { 
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "SafeStep requires your location while the app is in use to track recoverer movements.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "SafeStep requires your location even in the background for safety tracking.",
         "UIBackgroundModes": [
-          "location" 
-        ]
+          "location",
+          "fetch",
+          "remote-notification"
+        ],
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -26,17 +32,31 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "permissions" : [
+      "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE LOCATION",
-        "FOREGROUND_SERVICE"
-      ]
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDRpSCikLw2Bw8ugciuHS_aAZwR6F2Q9jE"
+        }
+      },
+      "package": "com.tascapeter514.safestep"
+      
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png",
       "bundler": "metro"
     },
     "plugins": [
+      "expo-notifications",
       "expo-router",
       [
         "expo-splash-screen",
@@ -53,11 +73,11 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "Your app needs access to your location to provide guidance and track safety steps.", 
-          "locationAlwaysAndWhenInUsePermission": "Your app uses your location to monitor movement for safety alerts even when the app is closed or not in use."
+          "locationWhenInUsePermission": "Your app needs access to your location to provide guidance and track safety steps.",
+          "locationAlwaysAndWhenInUsePermission": "Your app uses your location to monitor movement for safety alerts even when the app is closed or not in use.",
+          "isAndroidBackgroundLocationEnabled": true
         }
       ]
-
     ],
     "experiments": {
       "typedRoutes": true,
@@ -74,4 +94,3 @@
     "owner": "v58-tier3-team-31"
   }
 }
- 

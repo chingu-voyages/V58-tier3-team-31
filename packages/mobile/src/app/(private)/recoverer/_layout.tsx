@@ -3,7 +3,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const RecovererLayout = () => {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs screenOptions={{ headerShown: false }} detachInactiveScreens={false}>
       <Tabs.Screen
         name="index"
         options={{

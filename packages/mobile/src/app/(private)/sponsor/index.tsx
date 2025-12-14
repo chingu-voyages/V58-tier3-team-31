@@ -31,7 +31,7 @@ const SponsorDashboard = () => {
         <Avatar size="2xl">
           <AvatarImage source={require("@/assets/images/sponsor_avatar.png")} />
         </Avatar>
-        <Link href="/(private)/sponsor/recoverers/invitations">
+        <Link href="./sponsor/recoverers/invitations">
           <Text className="text-md font-medium underline text-blue-800">
             Pending invitations: {pendingInvitations}
           </Text>

@@ -50,7 +50,7 @@ importers:
         version: 2.0.4
       supabase:
         specifier: ^2.63.1
-        version: 2.65.8
+        version: 2.67.1
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -75,6 +75,9 @@ importers:
       '@gluestack-ui/image':
         specifier: ^0.1.17
         version: 0.1.17(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      '@gluestack-ui/switch':
+        specifier: ^0.1.29
+        version: 0.1.29(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       '@gluestack-ui/textarea':
         specifier: ^0.1.25
         version: 0.1.25(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
@@ -1047,6 +1050,12 @@ packages:
 
   '@gluestack-ui/image@0.1.17':
     resolution: {integrity: sha512-hcyTVBUw55bSjEpyynIZJVm3Ff6lcjKXFT55f890oy2PNGyFdsKr6V+t/jy5n/2fwbv1eR2KU0uDDiI2vmBh+A==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+
+  '@gluestack-ui/switch@0.1.29':
+    resolution: {integrity: sha512-swx0J20ULpN+pkHg8KioWibZETWE/6XvCBckmApNZf9RO2MiHHkNMw4Txne4u1z0OyLKGzBW1dbmkhLIOObaXg==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
@@ -3174,8 +3183,8 @@ packages:
   flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
 
-  flow-parser@0.293.0:
-    resolution: {integrity: sha512-8tEGAcWpCqioajiSqrJr2+JSmkEI2vO/UACFGG378RO106ez9xugVxe9EpXD3aI1Vbf+mEUGhMt0gMpveJwVGA==}
+  flow-parser@0.294.0:
+    resolution: {integrity: sha512-GoJ2WUPvW3y6dyRc2y51EHdk8I9/omFe5c2F8XaCFrQKqrMX9E6Xl+NvlROh1+dSdNB0qiSG4N0Jr0JR15vAng==}
     engines: {node: '>=0.4.0'}
 
   fontfaceobserver@2.3.0:
@@ -4962,8 +4971,8 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
-  supabase@2.65.8:
-    resolution: {integrity: sha512-ZEk9Mq1iambcg+GX1JT258eR2LpoNF2a6a6h1VZEPFNNSB54Yg7Z9bd8WlUM/XtB8p8sE37+AfzVXShNzcMIYg==}
+  supabase@2.67.1:
+    resolution: {integrity: sha512-d/trGytTjB/Hi625zHh2RFFttjLOkSdRTsY/N1pjxoAfG0blDiHKqPwu12VJYitg4nzgjfhjnD3pLyfU0ko5vg==}
     engines: {npm: '>=8'}
     hasBin: true
 
@@ -6527,6 +6536,18 @@ snapshots:
       '@gluestack-ui/utils': 0.1.15(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       '@react-native-aria/focus': 0.2.9(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
       '@react-native-aria/interactions': 0.2.16(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+    transitivePeerDependencies:
+      - react-native
+
+  '@gluestack-ui/switch@0.1.29(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@gluestack-ui/form-control': 0.1.19(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      '@gluestack-ui/utils': 0.1.15(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      '@react-native-aria/focus': 0.2.9(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      '@react-native-aria/interactions': 0.2.16(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.5)(react@19.1.0))(react@19.1.0)
+      '@react-stately/toggle': 3.9.2(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     transitivePeerDependencies:
@@ -9321,7 +9342,7 @@ snapshots:
 
   flow-enums-runtime@0.0.6: {}
 
-  flow-parser@0.293.0: {}
+  flow-parser@0.294.0: {}
 
   fontfaceobserver@2.3.0: {}
 
@@ -9744,7 +9765,7 @@ snapshots:
       '@babel/preset-flow': 7.27.1(@babel/core@7.28.5)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.5)
       '@babel/register': 7.28.3(@babel/core@7.28.5)
-      flow-parser: 0.293.0
+      flow-parser: 0.294.0
       graceful-fs: 4.2.11
       micromatch: 4.0.8
       neo-async: 2.6.2
@@ -11368,7 +11389,7 @@ snapshots:
       pirates: 4.0.7
       ts-interface-checker: 0.1.13
 
-  supabase@2.65.8:
+  supabase@2.67.1:
     dependencies:
       bin-links: 6.0.0
       https-proxy-agent: 7.0.6

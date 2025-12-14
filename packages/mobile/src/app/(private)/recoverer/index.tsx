@@ -2,12 +2,14 @@ import { Button, ButtonText } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { View } from "react-native";
 import useLocationTracker from "@/hooks/useLocationTracker";
+import useRecoverer from "@/hooks/useRecoverer";
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { checkAndRequestPermission } from "@/lib/notifications";
 import { Alert } from "react-native";
 
 const RecovererDashboard = () => {
+  const { isLoading } = useRecoverer();
   const { startTracking, stopTracking, trackingState } = useLocationTracker();
 
   useEffect(() => {

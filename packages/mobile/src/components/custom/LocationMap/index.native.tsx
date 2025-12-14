@@ -18,9 +18,6 @@ const LocationMap = () => {
     startTracking();
   }, [startTracking]);
 
-  console.log("map ref:", mapRef);
-  console.log("region:", region);
-
   useEffect(() => {
     if (trackingState.state === "tracking") {
       const { latitude, longitude } = trackingState.coords;

@@ -60,10 +60,7 @@ const PrivateLayout = () => {
           name="sponsorSettings"
           options={{ title: "", headerShown: false }}
         />
-        <Stack.Screen
-          name="recovererSettings"
-          options={{ title: "", headerShown: false }}
-        />
+        <Stack.Screen name="recovererSettings" options={{ title: "" }} />
       </Stack>
       <StatusBar style="auto" />
     </GluestackUIProvider>

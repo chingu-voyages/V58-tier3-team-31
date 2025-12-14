@@ -33,6 +33,7 @@
 		"cz-conventional-changelog": "^3.3.0",
 		"dotenv": "^17.2.3",
 		"lefthook": "^2.0.4",
+		"supabase": "^2.63.1",
 		"typescript": "catalog:"
 	},
 	"config": {
@@ -44,6 +45,7 @@
 		"packages/*"
 	],
 	"dependencies": {
+		"@gluestack-ui/textarea": "^0.1.25",
 		"@expo/html-elements": "^0.12.5",
 		"@legendapp/motion": "^2.5.3"
 	}

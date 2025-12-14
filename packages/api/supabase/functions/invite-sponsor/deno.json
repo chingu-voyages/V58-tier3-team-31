@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true
+  },
+  "tasks": {
+    "start": "supabase functions servce"
+  },
+  "imports": {
+    "react": "npm:react@18.3.1",
+    "resend": "npm:resend@4.0.0",
+    "@react-email/components": "npm:@react-email/components@0.0.22"
+  }
+}

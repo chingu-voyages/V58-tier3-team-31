@@ -18,6 +18,7 @@
     "@gluestack-ui/core": "^3.0.12",
     "@gluestack-ui/image": "^0.1.17",
     "@gluestack-ui/switch": "^0.1.29",
+    "@gluestack-ui/textarea": "^0.1.25",
     "@gluestack-ui/utils": "^3.0.12",
     "@legendapp/motion": "^2.5.3",
     "@react-native-async-storage/async-storage": "^2.2.0",
@@ -63,6 +64,8 @@
   },
   "private": true,
   "devDependencies": {
+    "@clack/core": "^0.5.0",
+    "gluestack-ui": "^3.0.11",
     "@types/react-native-maps": "^0.24.2"
   }
 }
